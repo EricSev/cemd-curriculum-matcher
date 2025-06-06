@@ -24,7 +24,8 @@ def load_heavy_imports():
     """Load heavy imports only when needed"""
     global sentence_transformers, cosine_similarity, tqdm
     if sentence_transformers is None:
-        print("Loading required libraries...")
+        message = "Loading required libraries..."
+        print(message)
         from sentence_transformers import SentenceTransformer
         from sklearn.metrics.pairwise import cosine_similarity as cs
         from tqdm import tqdm as tqdm_import
@@ -32,7 +33,8 @@ def load_heavy_imports():
         sentence_transformers = SentenceTransformer
         cosine_similarity = cs
         tqdm = tqdm_import
-        print("Libraries loaded!")
+        message = "Libraries loaded!"
+        print(message)
 
     return sentence_transformers, cosine_similarity, tqdm
 
@@ -41,18 +43,22 @@ class SimpleCurriculumMatcher:
     def __init__(self):
         self.model = None
 
-    def load_model(self):
+    def load_model(self, log_callback=None):
         """Load the sentence transformer model with progress feedback"""
         if self.model is None:
-            print(
-                "Loading sentence transformer model (this may take 30-60 seconds on first run)..."
-            )
+            message = "Loading sentence transformer model (this may take 30-60 seconds on first run)..."
+            print(message)
+            if log_callback:
+                log_callback(message)
 
             # Load heavy imports first
             SentenceTransformer, _, _ = load_heavy_imports()
 
             self.model = SentenceTransformer("all-MiniLM-L6-v2")
-            print("Model loaded successfully!")
+            message = "Model loaded successfully!"
+            print(message)
+            if log_callback:
+                log_callback(message)
         return self.model
 
     def normalize_text(self, text):
@@ -98,9 +104,14 @@ class SimpleCurriculumMatcher:
         concatenated = " ".join([part for part in parts if part])
         return concatenated
 
-    def precompute_catalog_embeddings(self, catalog_df, progress_callback=None):
+    def precompute_catalog_embeddings(
+        self, catalog_df, progress_callback=None, log_callback=None
+    ):
         """Precompute embeddings for all catalog products"""
-        print("Creating concatenated strings for catalog...")
+        message = "Creating concatenated strings for catalog..."
+        print(message)
+        if log_callback:
+            log_callback(message)
 
         # Create concatenated strings for all catalog records
         catalog_strings = []
@@ -111,7 +122,11 @@ class SimpleCurriculumMatcher:
             if progress_callback and idx % 100 == 0:
                 progress_callback(idx + 1, len(catalog_df), "Preparing catalog")
 
-        print("Computing embeddings for catalog...")
+        message = "Computing embeddings for catalog..."
+        print(message)
+        if log_callback:
+            log_callback(message)
+
         # Batch encode all catalog strings at once
         catalog_embeddings = self.model.encode(
             catalog_strings,
@@ -162,7 +177,9 @@ class SimpleCurriculumMatcher:
             print(f"Error processing record: {e}")
             return []
 
-    def process_matching(self, raw_df, catalog_df, progress_callback=None):
+    def process_matching(
+        self, raw_df, catalog_df, progress_callback=None, log_callback=None
+    ):
         """Process all matching with progress tracking"""
         start_time = time.time()
 
@@ -170,22 +187,26 @@ class SimpleCurriculumMatcher:
         if progress_callback:
             progress_callback(0, 100, "Loading AI model")
 
-        self.load_model()
+        self.load_model(log_callback=log_callback)
 
         if progress_callback:
             progress_callback(10, 100, "Model loaded")
 
         # Precompute catalog embeddings once
         catalog_embeddings, catalog_strings = self.precompute_catalog_embeddings(
-            catalog_df, progress_callback
+            catalog_df, progress_callback, log_callback
         )
 
-        print(
-            f"Catalog preprocessing completed in {time.time() - start_time:.2f} seconds"
-        )
-        print(
-            f"Processing {len(raw_df)} raw records against {len(catalog_df)} catalog records..."
-        )
+        elapsed = time.time() - start_time
+        message = f"Catalog preprocessing completed in {elapsed:.2f} seconds"
+        print(message)
+        if log_callback:
+            log_callback(message)
+
+        processing_message = f"Processing {len(raw_df)} raw records against {len(catalog_df)} catalog records..."
+        print(processing_message)
+        if log_callback:
+            log_callback(processing_message)
 
         results = []
         total_rows = len(raw_df)
@@ -224,17 +245,24 @@ class SimpleCurriculumMatcher:
                 elapsed = time.time() - start_time
                 rate = (idx + 1) / elapsed
                 remaining = (total_rows - idx - 1) / rate
-                print(
+                progress_msg = (
                     f"Processed {idx + 1}/{total_rows} records. "
                     f"Rate: {rate:.1f} rec/sec. "
                     f"ETA: {remaining/60:.1f} minutes"
                 )
+                print(progress_msg)
+                if log_callback:
+                    log_callback(progress_msg)
 
         total_time = time.time() - start_time
-        print(
-            f"Processing completed in {total_time:.2f} seconds ({total_time/60:.1f} minutes)"
-        )
-        print(f"Average rate: {len(raw_df)/total_time:.1f} records per second")
+        completion_msg = f"Processing completed in {total_time:.2f} seconds ({total_time/60:.1f} minutes)"
+        rate_msg = f"Average rate: {len(raw_df)/total_time:.1f} records per second"
+
+        print(completion_msg)
+        print(rate_msg)
+        if log_callback:
+            log_callback(completion_msg)
+            log_callback(rate_msg)
 
         return pd.DataFrame(results)
 
@@ -243,7 +271,7 @@ class SimpleMatcherGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Simple Concatenated Curriculum Matcher")
-        self.root.geometry("1200x800")  # Doubled the size
+        self.root.geometry("700x800")  # Doubled the size
 
         self.matcher = SimpleCurriculumMatcher()
         self.raw_file = None
