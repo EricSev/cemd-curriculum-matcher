@@ -12,6 +12,8 @@ import re
 import threading
 import os
 import time
+import sys
+import io
 from datetime import datetime
 
 # Defer heavy imports until needed
@@ -20,12 +22,15 @@ cosine_similarity = None
 tqdm = None
 
 
-def load_heavy_imports():
+def load_heavy_imports(log_callback=None):
     """Load heavy imports only when needed"""
     global sentence_transformers, cosine_similarity, tqdm
     if sentence_transformers is None:
         message = "Loading required libraries..."
         print(message)
+        if log_callback:
+            log_callback(message)
+
         from sentence_transformers import SentenceTransformer
         from sklearn.metrics.pairwise import cosine_similarity as cs
         from tqdm import tqdm as tqdm_import
@@ -33,8 +38,11 @@ def load_heavy_imports():
         sentence_transformers = SentenceTransformer
         cosine_similarity = cs
         tqdm = tqdm_import
+
         message = "Libraries loaded!"
         print(message)
+        if log_callback:
+            log_callback(message)
 
     return sentence_transformers, cosine_similarity, tqdm
 
@@ -52,9 +60,14 @@ class SimpleCurriculumMatcher:
                 log_callback(message)
 
             # Load heavy imports first
-            SentenceTransformer, _, _ = load_heavy_imports()
+            SentenceTransformer, _, _ = load_heavy_imports(log_callback=log_callback)
+
+            # Add progress message before model loading
+            if log_callback:
+                log_callback("Initializing AI model...")
 
             self.model = SentenceTransformer("all-MiniLM-L6-v2")
+
             message = "Model loaded successfully!"
             print(message)
             if log_callback:
@@ -127,13 +140,25 @@ class SimpleCurriculumMatcher:
         if log_callback:
             log_callback(message)
 
-        # Batch encode all catalog strings at once
+        # Calculate batch info for progress display
+        batch_size = 32
+        total_batches = (len(catalog_strings) + batch_size - 1) // batch_size
+
+        # Show batch progress start
+        if log_callback:
+            log_callback(f"Processing {total_batches} batches of embeddings...")
+
+        # Encode with disabled progress bar to avoid console output
         catalog_embeddings = self.model.encode(
             catalog_strings,
-            show_progress_bar=True,
-            batch_size=32,
+            show_progress_bar=False,  # Disable tqdm to prevent console interference
+            batch_size=batch_size,
             convert_to_numpy=True,
         )
+
+        # Show completion message
+        if log_callback:
+            log_callback(f"Batches: 100%|{'█'*50}| {total_batches}/{total_batches}")
 
         return catalog_embeddings, catalog_strings
 
@@ -186,6 +211,11 @@ class SimpleCurriculumMatcher:
         # Load model with user feedback
         if progress_callback:
             progress_callback(0, 100, "Loading AI model")
+
+        # Load heavy imports first
+        if log_callback:
+            log_callback("Loading required libraries...")
+        _, _, _ = load_heavy_imports(log_callback=log_callback)
 
         self.load_model(log_callback=log_callback)
 
@@ -271,7 +301,7 @@ class SimpleMatcherGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Simple Concatenated Curriculum Matcher")
-        self.root.geometry("700x800")  # Doubled the size
+        self.root.geometry("700x900")  # Doubled the size
 
         self.matcher = SimpleCurriculumMatcher()
         self.raw_file = None
@@ -362,26 +392,31 @@ class SimpleMatcherGUI:
 
         # Instructions
         instructions = """
-        Instructions:
-        1. This version concatenates all fields into a single string
-        2. Uses semantic similarity only (no field-specific logic)  
-        3. Much faster than multi-field comparison
-        4. Good for testing and quick iteration
-        
-        Expected processing time for 25K records: 10-30 minutes
-        Note: AI model loads when you click "Process Matching" (30-60 seconds)
-        
-        ========================================================================
-        FAST STARTUP: Heavy libraries load only when processing starts
-        ========================================================================
-        """
+       Instructions:
+       1. This version concatenates all fields into a single string
+       2. Uses semantic similarity only (no field-specific logic)  
+       3. Much faster than multi-field comparison
+       4. Good for testing and quick iteration
+       
+       Expected processing time for 25K records: 10-30 minutes
+       Note: AI model loads when you click "Process Matching" (30-60 seconds)
+       
+       ========================================================================
+       FAST STARTUP: Heavy libraries load only when processing starts
+       ========================================================================
+       """
         self.log_text.insert(tk.END, instructions)
 
     def log_message(self, message):
-        """Add message to log"""
-        self.log_text.insert(tk.END, f"{message}\n")
-        self.log_text.see(tk.END)
-        self.root.update()
+        """Add message to log and ensure it displays immediately"""
+
+        def update_gui():
+            self.log_text.insert(tk.END, f"{message}\n")
+            self.log_text.see(tk.END)
+            self.log_text.update_idletasks()  # Force immediate display
+
+        # Schedule GUI update on main thread
+        self.root.after(0, update_gui)
 
     def select_raw_file(self):
         filename = filedialog.askopenfilename(
@@ -415,16 +450,24 @@ class SimpleMatcherGUI:
             self.status_label.config(text="Ready to process")
 
     def update_progress(self, current, total, stage="Processing"):
-        """Update progress bar"""
-        progress = (current / total) * 100
-        self.progress_var.set(progress)
-        self.status_label.config(text=f"{stage}: {current}/{total}")
-        self.root.update()
+        """Update progress bar - thread safe"""
+
+        def update_gui():
+            progress = (current / total) * 100
+            self.progress_var.set(progress)
+            self.status_label.config(text=f"{stage}: {current}/{total}")
+
+        self.root.after(0, update_gui)
 
     def start_processing(self):
         """Start processing in a separate thread"""
         self.process_button.config(state="disabled")
-        self.log_message("Starting concatenated matching...")
+
+        # Use after() to ensure this runs on main thread
+        def log_start():
+            self.log_message("Starting concatenated matching...")
+
+        self.root.after(0, log_start)
 
         # Start processing thread
         thread = threading.Thread(target=self.process_files)
@@ -477,7 +520,10 @@ class SimpleMatcherGUI:
             # Process matching
             self.log_message("Starting concatenated matching process...")
             results_df = self.matcher.process_matching(
-                raw_df, catalog_df, progress_callback=self.update_progress
+                raw_df,
+                catalog_df,
+                progress_callback=self.update_progress,
+                log_callback=self.log_message,
             )
 
             # Save results
@@ -510,12 +556,12 @@ class SimpleMatcherGUI:
                 low_confidence = len(results_df[results_df["match_1_score"] <= 0.6])
 
                 summary = f"""
-                Processing Summary:
-                - Total records processed: {total_matches}
-                - High confidence matches (>0.8): {high_confidence} ({high_confidence/total_matches*100:.1f}%)
-                - Medium confidence matches (0.6-0.8): {medium_confidence} ({medium_confidence/total_matches*100:.1f}%)
-                - Low confidence matches (≤0.6): {low_confidence} ({low_confidence/total_matches*100:.1f}%)
-                """
+               Processing Summary:
+               - Total records processed: {total_matches}
+               - High confidence matches (>0.8): {high_confidence} ({high_confidence/total_matches*100:.1f}%)
+               - Medium confidence matches (0.6-0.8): {medium_confidence} ({medium_confidence/total_matches*100:.1f}%)
+               - Low confidence matches (≤0.6): {low_confidence} ({low_confidence/total_matches*100:.1f}%)
+               """
                 self.log_message(summary)
 
                 messagebox.showinfo(
@@ -531,9 +577,13 @@ class SimpleMatcherGUI:
             messagebox.showerror("Error", error_msg)
 
         finally:
-            self.process_button.config(state="normal")
-            self.progress_var.set(0)
-            self.status_label.config(text="Ready to process")
+            # Re-enable button on main thread
+            def reset_ui():
+                self.process_button.config(state="normal")
+                self.progress_var.set(0)
+                self.status_label.config(text="Ready to process")
+
+            self.root.after(0, reset_ui)
 
 
 def main():
