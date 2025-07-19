@@ -276,8 +276,8 @@ class MatcherApp:
 
         main_frame = ttk.Frame(self.root, padding="10")
         main_frame.grid(row=0, column=0, sticky="nsew")
-        self.root.columnconfigure(0, weight=1)
-        self.root.rowconfigure(0, weight=1)
+        self.root.columnconfigure(0, weight=1)  # type: ignore
+        self.root.rowconfigure(0, weight=1)  # type: ignore
         file_frame = ttk.LabelFrame(main_frame, text="1. Select Files & Directory")
         file_frame.grid(row=1, column=0, columnspan=2, sticky="ew", padx=5, pady=5)
         self._create_file_selector(file_frame, "Input Data File:", self.input_file)
@@ -451,8 +451,10 @@ class MatcherApp:
                         show_progress_bar=False,
                     )
                     sims = cosine_similarity(
-                        raw_embedding, np.vstack(primary_candidates["embedding"].values)
-                    )[0]
+                        raw_embedding, np.vstack(primary_candidates["embedding"].values)  # type: ignore
+                    )[
+                        0
+                    ]  # type: ignore
                     top_indices_local = np.argsort(sims)[-10:][::-1]
                     top_candidates_df = primary_candidates.iloc[top_indices_local]
 
