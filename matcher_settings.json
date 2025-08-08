@@ -1,5 +1,8 @@
 {
-    "name": 0.98,
+    "name_semantic": 0.4,
+    "name_fuzzy": 0.15,
     "publisher": 0.02,
-    "grade": 0.0
+    "grade": 0.0,
+    "year": 0.05,
+    "profile": "accurate"
 }
