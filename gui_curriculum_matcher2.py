@@ -65,7 +65,7 @@ class EnhancedCurriculumMatcher:
         self.weights = (
             weights
             if weights is not None
-            else {"name": 0.5, "publisher": 0.3, "grade": 0.2}
+            else {"name": 0.95, "publisher": 0.05, "grade": 0.0}
         )
 
     def _log(self, message):

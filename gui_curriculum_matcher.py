@@ -99,7 +99,9 @@ class EnhancedCurriculumMatcher:
         raw_embedding = self.model.encode([raw_name_sem], show_progress_bar=False)
         semantic_score = cosine_similarity(
             raw_embedding, [catalog_search_name_embedding]
-        )[0][0]
+        )[0][
+            0
+        ]  # type: ignore
         fuzzy_score_1 = rapidfuzz.fuzz.token_sort_ratio(
             raw_name_fuzz, catalog_name_fuzz
         )
