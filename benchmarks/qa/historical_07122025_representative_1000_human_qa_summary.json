@@ -1,0 +1,34 @@
+{
+  "row_count": 2255,
+  "label_counts": {
+    "correct_human_match": 1000,
+    "incorrect_human_match": 1255
+  },
+  "case_type_counts": {
+    "expected_match": 1000,
+    "pred_rank_1_incorrect": 472,
+    "pred_rank_2_incorrect": 543,
+    "pred_rank_3_incorrect": 240
+  },
+  "label_strength_counts": {
+    "gold_positive": 1000,
+    "silver_negative": 783,
+    "silver_strong_negative": 472
+  },
+  "slice_counts": {
+    "assessment": 594,
+    "catalog_unspecified": 89,
+    "fallback_selected": 134,
+    "general": 481,
+    "sparse_evidence": 514,
+    "state_specific_risk": 443
+  },
+  "policy_slice_counts": {
+    "assessment_other": 26,
+    "assessment_publisher_missing": 175,
+    "assessment_short_or_acronym_title": 354,
+    "assessment_state_specific_expected": 13,
+    "catalog_unspecified": 148,
+    "standard_catalog_mapping": 1539
+  }
+}

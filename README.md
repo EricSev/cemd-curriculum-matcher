@@ -1,100 +1,197 @@
-### `README.md`
+# CEMD Curriculum Matcher
 
-# Enhanced Curriculum Matcher
+This repository is the canonical home for the Python curriculum matching application. It currently contains the latest Tkinter-based matcher, packaging metadata, and an explicit archive of earlier GUI and Colab experiments.
 
-The Enhanced Curriculum Matcher is a powerful Python application designed to accurately match messy, real-world curriculum data against a standardized product catalog. It uses a sophisticated, multi-faceted scoring engine and provides a user-friendly graphical interface (GUI) for iterative testing, as well as a headless mode for large-scale batch processing.
+## Active Layout
 
-This tool is ideal for both data quality assurance (QA) on existing matched data and for automating the process of matching new, un-matched curriculum data, all within a single, unified workflow.
+```text
+curriculum-matcher/
+  src/curriculum_matcher/   # Active application package
+  scripts/                  # Convenience runner(s)
+  docs/                     # Current repo documentation
+  data_samples/             # Small non-sensitive sample data only
+  tests/                    # Reserved for automated tests
+  archive/                  # Legacy scripts and experiments
+```
 
-## Key Features
+## Primary Entry Points
 
--   **Unified Processing Mode:** The application intelligently handles both QA and new matching in a single run. If an input row contains a pre-existing match (`product_identifier`), the tool calculates a QA score for that match *in addition* to finding the top new programmatic matches.
--   **Multi-Faceted Scoring Engine:** Moves beyond simple string comparison by calculating independent scores for **Product Name**, **Publisher**, and **Grade**, then combines them using tunable weights for a more reliable `final_score`.
--   **Robust Normalization:** Employs advanced, purpose-built data cleaning pipelines to handle real-world data issues like typos, internal whitespace ("NoRedInk" vs. "No Red Ink"), punctuation, and word order variations.
--   **Context-Aware Matching:**
-    -   **Publisher Acquisitions:** Intelligently checks against both current (`publisher`) and prior (`publisher_prior`) publisher fields to correctly handle corporate acquisitions.
-    -   **Title Enrichment:** Enriches the catalog's product names with `series` and specific `subject_level2` data to create a more powerful and accurate search signal.
-    -   **"Two-Way" Name Matching:** The name score is robust against partial matches (e.g., matching the acronym "SEPUP" to a full title containing "SEPUP MS Science").
--   **Graphical User Interface (GUI):** A simplified, user-friendly desktop application for easy file selection and processing on a local machine.
--   **Headless Mode:** A command-line option (`--headless`) to bypass the GUI, enabling large-scale processing on servers or in cloud environments like Google Colab where a GPU can provide a significant speed-up.
--   **Comprehensive QA Output:** The output CSV is designed for analysis. It includes all original data columns, the detailed component scores for the **Top 3 programmatic matches**, and additional descriptive data from the catalog for each match. For rows that had a human match, it also includes a set of `human_match_*` score columns for easy validation.
+- Package module: `src/curriculum_matcher/app.py`
+- Module run: `python -m curriculum_matcher`
+- Script run: `python scripts/run_matcher.py`
+- Installed CLI: `curriculum-matcher`
 
-## Setup and Installation
+## What The App Does
 
-This project uses a virtual environment to manage dependencies.
+The matcher scores messy curriculum records against a standard product catalog and writes out:
 
-1.  **Clone the Repository:**
-    ```bash
-    git clone <your-repository-url>
-    cd enhanced-curriculum-matcher
-    ```
+- top 3 programmatic matches
+- fallback-repair audit fields when alternate field interpretations are used
+- component scores for semantic name similarity, fuzzy name similarity, publisher, grade, and year
+- `human_match_*` QA scores and challenge flags when a prior `product_identifier` already exists on the input row
 
-2.  **Create a Virtual Environment:**
-    ```bash
-    # For Windows
-    python -m venv venv
+The current matcher uses a two-stage retrieval flow:
 
-    # For macOS/Linux
-    python3 -m venv venv
-    ```
+- BM25 plus MiniLM for candidate recall
+- optional MPNet reranking in the `accurate` profile
 
-3.  **Activate the Virtual Environment:**
-    ```bash
-    # For Windows (PowerShell)
-    .\venv\Scripts\Activate
+## Setup
 
-    # For macOS/Linux
-    source venv/bin/activate
-    ```
-    Your terminal prompt should now show `(venv)` at the beginning.
+Preferred local environment convention:
 
-4.  **Install Dependencies:**
-    Install all required libraries from the `requirements.txt` file.
-    ```bash
-    pip install -r requirements.txt
-    ```
+- use `.venv/` for the local machine-specific virtual environment
+- do not commit `.venv/`
+- recreate `.venv/` separately on each Mac or Windows machine
 
-## Usage
+This repository currently declares Python `>=3.10` in `pyproject.toml`, so use a Python 3.10+ interpreter when creating the environment.
 
-The application can be run in two ways: with the GUI for local testing, or in headless mode for large-scale processing.
+macOS / Linux:
 
-### GUI Mode (For Laptops)
+```bash
+python3.10 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e .
+```
 
-This is the standard way to run the application for smaller test batches.
+Windows PowerShell:
 
-1.  Activate your virtual environment (see Step 3 above).
-2.  Run the script from your terminal:
-    ```bash
-    python enhanced_curriculum_matcher.py
-    ```
-3.  The application window will appear.
-    -   **Select Files:** Use the "Browse..." buttons to select your **Input Data File (CSV)** and your **Product Catalog File (CSV)**.
-    -   **Select Output Directory:** Choose the folder where you want the results file to be saved.
-    -   **Start Processing:** Click the "Start Processing" button. Progress will be displayed in the progress bar and the log window.
+```powershell
+py -3.10 -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+pip install -e .
+```
 
-### Headless Mode (For Servers or Google Colab)
+If your machine only has `python3` and it is below 3.10, install a newer Python first rather than creating a mismatched environment.
 
-This mode is designed for processing very large datasets where a GPU is beneficial and a GUI is not available.
+## OpenAI API Key
 
-1.  **Open the Script:** Open `enhanced_curriculum_matcher.py` in a text editor.
-2.  **Configure File Paths:** Navigate to the `_run_headless_mode` function and **edit the file paths** to point to your data files in the server/Colab environment.
-    ```python
-    def _run_headless_mode(self):
-        # --- CONFIGURE FILE PATHS FOR COLAB/HEADLESS MODE HERE ---
-        input_file_path = "/content/your_large_input_file.csv"
-        catalog_file_path = "/content/product_catalog.csv"
-        output_dir_path = "/content/results/"
-        # ...
-    ```
-3.  **Run from the Command Line:** Activate your environment and run the script with the `--headless` flag.
-    ```bash
-    python enhanced_curriculum_matcher.py --headless
-    ```
-4.  The script will run without launching a UI, printing all log messages directly to the console. The output file will be saved to the specified output directory with a timestamp.
+For Batch API scripts in this repo, the simplest persistent setup is a repo-root `.env` file.
 
-## Data Requirements
+1. Copy `.env.example` to `.env`
+2. Put your real `OPENAI_API_KEY` in `.env`
+3. Do not commit `.env` (this repo already ignores it in `.gitignore`)
 
-For the program to function correctly, your input files should contain the following key columns:
+Example:
 
--   **Input Data File:** `product_name_raw`, `publisher_raw`, `grade`, `subject`, `product_type_usage`. If a row contains a valid `product_identifier`, it will be scored for QA purposes.
--   **Product Catalog File:** `product_identifier`, `product_name`, `publisher`, `publisher_prior`, `series`, `subject_level1`, `subject_level2`, `intended_grades`. The presence of `intended_grades2` is recommended for cleaner grade range output.
+```bash
+cp .env.example .env
+```
+
+## Running
+
+GUI mode:
+
+```bash
+python -m curriculum_matcher
+```
+
+Headless mode:
+
+```bash
+python -m curriculum_matcher --headless --profile accurate
+```
+
+Evaluation mode:
+
+```bash
+PYTHONPATH=src python scripts/evaluate_matcher.py \
+  --benchmark-file path/to/benchmark.csv \
+  --catalog-file path/to/catalog.csv \
+  --profile accurate \
+  --output-json benchmarks/outputs/latest-summary.json \
+  --output-csv benchmarks/outputs/latest-records.csv
+```
+
+After installing the package:
+
+```bash
+curriculum-matcher-evaluate \
+  --benchmark-file path/to/benchmark.csv \
+  --catalog-file path/to/catalog.csv
+```
+
+URL evidence audit:
+
+```bash
+PYTHONPATH=src python scripts/audit_source_evidence.py \
+  --input-file path/to/input.csv \
+  --catalog-file path/to/catalog.csv \
+  --output-csv benchmarks/outputs/url-audit.csv \
+  --output-json benchmarks/outputs/url-audit-summary.json
+```
+
+Human-match QA evaluation:
+
+```bash
+PYTHONPATH=src python scripts/evaluate_human_match_qa.py \
+  --input-file path/to/qa-benchmark.csv \
+  --catalog-file path/to/catalog.csv \
+  --output-csv benchmarks/outputs/human-qa-records.csv \
+  --output-json benchmarks/outputs/human-qa-summary.json
+```
+
+LLM rerank prompt-pack generation:
+
+```bash
+PYTHONPATH=src python scripts/evaluate_llm_rerank.py \
+  --records-csv benchmarks/outputs/historical_07122025_representative_1000_fast_records.csv \
+  --catalog-file path/to/catalog.csv \
+  --output-jsonl benchmarks/outputs/llm-rerank-prompts.jsonl \
+  --output-json benchmarks/outputs/llm-rerank-prompts-summary.json \
+  --only-errors
+```
+
+OpenAI Batch API request prep for rerank prompts:
+
+```bash
+PYTHONPATH=src python scripts/prepare_openai_batch_requests.py \
+  --prompt-jsonl benchmarks/outputs/historical_07122025_representative_1000_llm_rerank_prompts.jsonl \
+  --output-jsonl benchmarks/outputs/historical_07122025_representative_1000_llm_rerank_batch_requests.jsonl \
+  --model gpt-5.4-mini \
+  --reasoning-effort low
+
+PYTHONPATH=src python scripts/run_openai_batch.py upload \
+  --input-jsonl benchmarks/outputs/historical_07122025_representative_1000_llm_rerank_batch_requests.jsonl
+
+PYTHONPATH=src python scripts/run_openai_batch.py create \
+  --input-file-id file-... \
+  --endpoint /v1/responses
+```
+
+## Data Expectations
+
+Input data should include at least:
+
+- `product_name_raw`
+- `publisher_raw`
+- `grade`
+
+Catalog data should include at least:
+
+- `product_identifier`
+- `product_name`
+- `publisher`
+- `publisher_prior`
+- `series`
+- `intended_grades`
+
+## Notes
+
+- Current roadmap and milestone tracker:
+  - `docs/roadmap/2026-04-04-roadmap-and-checkpoints.md`
+  - `docs/roadmap/2026-04-04-milestone-status.md`
+- Current analysis reports:
+  - `docs/analysis/2026-04-03-starter-gold-fast-error-analysis.md`
+  - `docs/analysis/2026-04-03-starter-gold-field-corruption-report.md`
+  - `docs/analysis/2026-04-04-repair-strategy-report.md`
+  - `docs/analysis/2026-04-04-human-qa-canonical-report.md`
+  - `docs/analysis/2026-04-04-human-qa-tuning-report.md`
+  - `docs/analysis/2026-04-04-live-url-pilot-report.md`
+- Runtime settings are stored in the repo-root `matcher_settings.json`.
+- Older scripts have been moved into `archive/` to keep the active path clear.
+- `rank-bm25` is now part of the declared dependencies because the current app requires it.
+- Benchmark scaffolding now lives under `benchmarks/`.
+- Basic unit tests can be run with `PYTHONPATH=src python -m unittest discover -s tests`.
+- The old `venv/` folder should be treated as legacy machine-specific state, not the active environment standard.

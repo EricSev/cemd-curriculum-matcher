@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-04-03T21:11:42.791655+00:00",
+  "source_benchmark": "benchmarks/gold/starter_gold_100.csv",
+  "row_count": 100,
+  "assets": {
+    "clean_reference": {
+      "path": "benchmarks/corruptions/starter_gold_100/clean_reference.csv",
+      "rows": 100,
+      "columns_added": [
+        "original_product_name_raw",
+        "original_publisher_raw",
+        "original_grade",
+        "corruption_type",
+        "corruption_notes"
+      ]
+    },
+    "title_publisher_swapped": {
+      "path": "benchmarks/corruptions/starter_gold_100/title_publisher_swapped.csv",
+      "rows": 100,
+      "columns_added": [
+        "original_product_name_raw",
+        "original_publisher_raw",
+        "original_grade",
+        "corruption_type",
+        "corruption_notes"
+      ]
+    },
+    "title_in_publisher_title_blank": {
+      "path": "benchmarks/corruptions/starter_gold_100/title_in_publisher_title_blank.csv",
+      "rows": 100,
+      "columns_added": [
+        "original_product_name_raw",
+        "original_publisher_raw",
+        "original_grade",
+        "corruption_type",
+        "corruption_notes"
+      ]
+    },
+    "publisher_in_title_publisher_blank": {
+      "path": "benchmarks/corruptions/starter_gold_100/publisher_in_title_publisher_blank.csv",
+      "rows": 100,
+      "columns_added": [
+        "original_product_name_raw",
+        "original_publisher_raw",
+        "original_grade",
+        "corruption_type",
+        "corruption_notes"
+      ]
+    },
+    "grade_corrupted_or_missing": {
+      "path": "benchmarks/corruptions/starter_gold_100/grade_corrupted_or_missing.csv",
+      "rows": 100,
+      "columns_added": [
+        "original_product_name_raw",
+        "original_publisher_raw",
+        "original_grade",
+        "corruption_type",
+        "corruption_notes"
+      ]
+    }
+  }
+}

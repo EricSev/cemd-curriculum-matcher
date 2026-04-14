@@ -1,0 +1,22 @@
+{
+  "row_count": 261,
+  "label_counts": {
+    "correct_human_match": 100,
+    "incorrect_human_match": 161
+  },
+  "case_type_counts": {
+    "expected_match": 100,
+    "pred_rank_1_incorrect": 53,
+    "pred_rank_2_incorrect": 74,
+    "pred_rank_3_incorrect": 34
+  },
+  "label_strength_counts": {
+    "gold_positive": 100,
+    "silver_negative": 108,
+    "silver_strong_negative": 53
+  },
+  "slice_counts": {
+    "fallback_selected": 105,
+    "has_adopted_url": 156
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-04-03T20:14:30.178880+00:00",
+  "source_files": {
+    "raw_sample": "/Users/ericseverson/Library/CloudStorage/OneDrive-Personal/Consulting/Meg/02-data/raw-input/samples/CEMD curriculum matching sample dataset.csv",
+    "training_sample": "/Users/ericseverson/Library/CloudStorage/OneDrive-Personal/Consulting/Meg/02-data/evaluation/historical-runs/Test Data 002/matched_training_sample dataset.csv",
+    "catalog": "/Users/ericseverson/Library/CloudStorage/OneDrive-Personal/Consulting/Meg/02-data/catalog/snapshots/CEMD Product Catalog - 05212025.csv"
+  },
+  "assets": {
+    "gold": {
+      "starter_gold_100.csv": {
+        "rows": 100,
+        "source": "CEMD curriculum matching sample dataset.csv"
+      }
+    },
+    "weak_labels": {
+      "starter_weak_labels_250.csv": {
+        "rows": 250,
+        "source": "matched_training_sample dataset.csv"
+      }
+    },
+    "slices": {
+      "slice_missing_publisher_50.csv": {
+        "rows": 50,
+        "source": "CEMD curriculum matching sample dataset.csv",
+        "rule": "publisher_raw missing or blank"
+      },
+      "slice_publisher_variants_50.csv": {
+        "rows": 50,
+        "source": "CEMD curriculum matching sample dataset.csv",
+        "rule": "publisher_raw contains common publisher variants"
+      },
+      "slice_ela_core_50.csv": {
+        "rows": 50,
+        "source": "CEMD curriculum matching sample dataset.csv",
+        "rule": "subject=ELA and product_type_usage=Core Curriculum"
+      }
+    }
+  }
+}
