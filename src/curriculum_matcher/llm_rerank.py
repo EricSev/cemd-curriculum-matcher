@@ -177,6 +177,7 @@ def build_rerank_prompt(
             "rank": candidate.rank,
             "catalog_id": candidate.catalog_id,
             "product_name": candidate.product_name,
+            "series": candidate.series,
             "publisher": candidate.publisher,
             "grades": candidate.grades,
             "copyright_year": candidate.copyright_year,

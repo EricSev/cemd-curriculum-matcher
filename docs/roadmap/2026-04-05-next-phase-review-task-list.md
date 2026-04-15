@@ -31,6 +31,18 @@ Locked baseline artifacts:
 
 Latest checkpoint:
 
+- `2026-04-15 10:25 AM MST`: `G4` measured and rejected; removing candidate `series` from `SHORTLIST_CANDIDATES` did not beat the canonical accepted `F2` baseline
+- changed only the `SHORTLIST_CANDIDATES` payload in `src/curriculum_matcher/llm_rerank.py` by removing `series`, then restored the accepted `F2` baseline after measurement
+- saved `G4` artifacts:
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g4-no-series-prompts-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g4-no-series-batch-scored-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g4-no-series-batch-pipeline-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g4-no-series-vs-f2-comparison.json`
+- shared-row comparison versus the canonical accepted `F2` baseline used `454` shared rows because the `G4` batch returned `454` scored rows with `1` failed request
+- shared-row deltas versus the canonical accepted `F2` baseline: selection rate `+0.0055`, all-row top-1 `-0.0018`, selected-row top-1 `-0.0077`
+- targeted family and recovery movement stayed weak: `catalog_state_specific_expected` top-1 `-0.1154`, wrong-top1-but-gold-in-shortlist rows top-1 `-0.0071`, assessment rows top-1 `+0.0000`
+- the candidate also introduced `2` repaired selected ids and the failed request was a `503 server_is_overloaded` response rather than a prompt-validation issue
+- reject `G4`; the accepted rerank prompt baseline remains `F2` no-score exposure and no experiment is currently in progress
 - `2026-04-15 05:45 AM MST`: `G4` lifted and started; the code change and prompt/request artifacts are ready, but the live OpenAI batch is still in progress and has not produced a final scored output yet
 - changed only the `SHORTLIST_CANDIDATES` payload in `src/curriculum_matcher/llm_rerank.py` by removing `series`
 - updated `tests/test_llm_rerank.py` to assert `series` is absent from emitted shortlist candidates while other accepted `F2` fields remain present
@@ -310,7 +322,7 @@ Running baseline note:
 | G1 | `accepted` | Canonical prompt-pack alignment checkpoint | reporting / comparison contract only | row-count parity and row-matched accepted baseline artifacts | review note: `docs/analysis/2026-04-14-canonical-prompt-pack-alignment-review.md` | accepted: `F2` row-matched artifact set becomes the default rerank comparison baseline |
 | G2 | `rejected` | Matcher-internal confidence label suppression | remove `confidence_band` and `match_selected_strategy` only | all-row top-1, selected-row top-1, wrong-top1-but-gold-in-shortlist rows, selection-rate stability | review note: `docs/analysis/2026-04-14-matcher-internal-label-suppression-review.md` | accepted: trimmed row-context contract becomes the rerank prompt baseline |
 | G3 | `rejected` | Derived ambiguity label suppression | remove `usage_ambiguity`, `state_specific_risk`, `placeholder_mapping`, and `assessment_slice` only | state-specific, placeholder, and assessment ambiguity slices | review note: `docs/analysis/2026-04-14-derived-ambiguity-label-suppression-review.md` | accepted: derived-row-label policy becomes the rerank prompt baseline |
-| G4 | `in progress` | Candidate series exposure experiment | candidate `series` exposure only | near-duplicate families, wrong-top1-but-gold-in-shortlist rows, selected-row precision | review note: `docs/analysis/2026-04-14-series-exposure-review.md` | accepted: candidate-series exposure policy becomes the rerank prompt baseline |
+| G4 | `rejected` | Candidate series exposure experiment | candidate `series` exposure only | near-duplicate families, wrong-top1-but-gold-in-shortlist rows, selected-row precision | review note: `docs/analysis/2026-04-14-series-exposure-review.md` | accepted: candidate-series exposure policy becomes the rerank prompt baseline |
 
 ## Exact Review Workflow
 

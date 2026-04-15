@@ -102,8 +102,8 @@ class LLMRerankTests(unittest.TestCase):
             )[0]
         )
         self.assertEqual(shortlist[0]["product_name"], "Wonders: Unspecified")
+        self.assertEqual(shortlist[0]["series"], "Wonders")
         self.assertEqual(shortlist[0]["publisher"], "McGraw Hill Education")
-        self.assertNotIn("series", shortlist[0])
 
     def test_extract_json_object_handles_fenced_json(self):
         response = extract_json_object(
