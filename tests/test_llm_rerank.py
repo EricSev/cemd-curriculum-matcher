@@ -95,6 +95,15 @@ class LLMRerankTests(unittest.TestCase):
         self.assertEqual(district_row["assessment_slice"], "not_assessment")
         self.assertEqual(district_row["confidence_band"], "low")
         self.assertEqual(district_row["match_selected_strategy"], "title_plus_publisher")
+        shortlist = json.loads(
+            prompt_record["user_prompt"].split("\n\nSHORTLIST_CANDIDATES\n", 1)[1].split(
+                "\n\nRESPONSE_JSON_SCHEMA",
+                1,
+            )[0]
+        )
+        self.assertEqual(shortlist[0]["product_name"], "Wonders: Unspecified")
+        self.assertEqual(shortlist[0]["publisher"], "McGraw Hill Education")
+        self.assertNotIn("series", shortlist[0])
 
     def test_extract_json_object_handles_fenced_json(self):
         response = extract_json_object(
