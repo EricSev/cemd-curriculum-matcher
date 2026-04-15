@@ -31,6 +31,76 @@ Locked baseline artifacts:
 
 Latest checkpoint:
 
+- `2026-04-14 04:45 PM MST`: `G3` measured and rejected; removing derived ambiguity labels from `DISTRICT_ROW` did not beat the canonical accepted `F2` baseline
+- changed only the `DISTRICT_ROW` payload in `src/curriculum_matcher/llm_rerank.py` by removing `usage_ambiguity`, `state_specific_risk`, `placeholder_mapping`, and `assessment_slice`, then restored the accepted `F2` baseline after measurement
+- saved `G3` artifacts:
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g3-derived-labels-prompts-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g3-derived-labels-batch-scored-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g3-derived-labels-batch-pipeline-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g3-derived-labels-vs-f2-comparison.json`
+- the original `G3` batch eventually completed cleanly with `455` scored rows and `0` failed requests
+- shared-row comparison versus the canonical accepted `F2` baseline used all `455` rows
+- overall deltas versus the canonical accepted `F2` baseline: selection rate `+0.0044`, all-row top-1 `-0.0132`, selected-row top-1 `-0.0292`
+- targeted ambiguity slices did not improve: `catalog_state_specific_expected` top-1 `-0.1154`, `catalog_unspecified` top-1 `-0.0208`, assessment rows top-1 `+0.0000`, and wrong-top1-but-gold-in-shortlist rows top-1 `-0.0429`
+- reject `G3`; the accepted rerank prompt baseline remains `F2` no-score exposure and no experiment is currently in progress
+- the next roadmap movement is to lift exactly `G4` if continuing rerank prompt-contract experiments
+- `2026-04-14 04:15 PM MST`: `G3` lifted and started; the code change and prompt/request artifacts are ready, but the live OpenAI batch is still in progress and has not produced a scored output yet
+- changed only the `DISTRICT_ROW` payload in `src/curriculum_matcher/llm_rerank.py` by removing `usage_ambiguity`, `state_specific_risk`, `placeholder_mapping`, and `assessment_slice`
+- updated `tests/test_llm_rerank.py` to assert those four derived ambiguity labels are absent while `confidence_band` and `match_selected_strategy` remain present
+- verified locally:
+  - `PYTHONPATH=src ./.venv/bin/python -m unittest tests/test_llm_rerank.py`
+  - result: `5` tests passed
+- saved `G3` pre-result artifacts:
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g3-derived-labels-prompts.jsonl`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g3-derived-labels-prompts-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g3-derived-labels-requests.jsonl`
+- live batch state at checkpoint:
+  - batch id `batch_69debc7911b08190b55cccfdbba7d76c`
+  - status `in_progress`
+  - request counts: total `455`, completed `0`, failed `0`
+- no keep / reject decision yet because the batch has not reached a terminal state
+- next roadmap movement is to resume `G3` from the live batch, download and score the output when complete, compare it against the canonical `F2` baseline, and then decide accept / reject before touching `G4`
+- `2026-04-14 02:40 PM MST`: `G2` measured and rejected; removing matcher-internal confidence labels did not beat the canonical accepted `F2` no-score baseline cleanly
+- changed only the `DISTRICT_ROW` payload in `src/curriculum_matcher/llm_rerank.py` by removing `confidence_band` and `match_selected_strategy`
+- saved `G2` artifacts:
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g2-internal-labels-prompts-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g2-internal-labels-batch-scored-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g2-internal-labels-batch-pipeline-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g2-internal-labels-vs-f2-comparison.json`
+- shared-row comparison versus the canonical accepted `F2` baseline used `450` shared rows because the `G2` batch returned `450` scored rows with `5` failed requests
+- shared-row deltas versus the canonical accepted `F2` baseline: selection rate `-0.0111`, all-row top-1 `+0.0000`, selected-row top-1 `+0.0089`
+- targeted recovery improved slightly on wrong-top1-but-gold-in-shortlist rows, but `catalog_state_specific_expected` regressed and the candidate did not clear the promotion threshold
+- reject `G2`; the accepted rerank prompt baseline remains `F2` no-score exposure and the accepted comparison-contract baseline remains the row-matched `F2` artifact set
+- no active experiment remains in progress after the `G2` closeout; the next roadmap movement is to restore the accepted `F2` code path and then lift exactly `G3`
+- `2026-04-14 02:35 PM MST`: `G2` lifted and started; code change and prompt/request artifacts are ready, but the live OpenAI batch is still in progress and has not produced a final scored output yet
+- changed only the `DISTRICT_ROW` payload in `src/curriculum_matcher/llm_rerank.py` by removing `confidence_band` and `match_selected_strategy`
+- verified locally that the generated prompt payload omits both fields and that targeted rerank tests still pass
+- saved `G2` pre-result artifacts:
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g2-internal-labels-prompts.jsonl`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g2-internal-labels-prompts-summary.json`
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-g2-internal-labels-requests.jsonl`
+- live batch state at checkpoint:
+  - batch id `batch_69de7b254d408190b7bbd31563c9d421`
+  - status `in_progress`
+  - request counts: total `455`, completed `413`, failed `0`
+- no keep / reject decision yet because the batch has not reached a terminal state
+- next roadmap movement is to resume `G2` from the live batch, download/score the output when complete, compare it against the canonical `F2` baseline, and then decide accept / reject before touching `G3`
+- `2026-04-14 01:55 PM MST`: `G1` accepted; the accepted `F2` no-score run has been frozen as the official row-matched rerank baseline artifact set for post-`F` experiments
+- changed only the reporting / comparison contract and did not change matcher, retrieval, rerank behavior, shortlist, model, or reasoning settings
+- saved `G1` artifacts:
+  - `benchmarks/outputs/openai_batch_runs/historical-top10-gpt54mini-medium-f2-no-score-canonical-baseline.json`
+  - `docs/analysis/2026-04-14-canonical-prompt-pack-alignment-review.md`
+- accepted `F2` row-match validation: prompts `455`, scored rows `455`, prompt-minus-scored `0`, scored-minus-prompt `0`
+- older pre-`F2` historical baseline remains useful for history, but not as the default direct comparison base because it still has prompt/scored row mismatch
+- accept `G1`; no behavioral baseline changed, but the comparison-contract baseline now points to the accepted `F2` row-matched artifact set
+- no active experiment remains in progress after the `G1` checkpoint; the next roadmap movement is to lift exactly `G2`
+- `2026-04-14 01:20 PM MST`: post-`F` experiment set defined after repo cleanup checkpoint; no matcher, retrieval, rerank, or shortlist behavior changed in this pass
+- confirmed the accepted rerank prompt baseline remains `F2` no-score exposure on top of matcher `C1 + C2 + C5`, retrieval `0.25 * BM25 + 0.5 * semantic + 0.25 * char n-gram`, shortlist `10`, model `gpt-5.4-mini`, reasoning `medium`
+- confirmed the `F` series is fully closed: `F2` accepted, `F1` / `F3` / `F4` rejected
+- defined a new `G` series focused on rerank prompt input-contract cleanup rather than more top-level wording changes
+- saved roadmap definition note:
+  - `docs/roadmap/2026-04-14-post-f-experiment-set.md`
+- no active experiment remains in progress after this checkpoint; the next roadmap movement is to lift exactly `G1`, then `G2` if continuing behavioral experiments
 - `2026-04-06 09:34 AM MST`: `F4` measured and rejected; stricter abstention wording improved selected-row precision but lost too much overall recovery versus the accepted `F2` no-score prompt baseline
 - changed only the abstention guidance sentence in `src/curriculum_matcher/llm_rerank.py`, ran the batch, and then restored the accepted `F2` prompt baseline after measurement
 - saved `F4` artifacts:
@@ -221,6 +291,10 @@ Running baseline note:
 | F2 | `accepted` | Raw matcher-score exposure experiment | prompt score exposure only | wrong-top1-but-gold-in-shortlist rows, selection-rate stability, repaired / invalid ids | review note: `docs/analysis/2026-04-06-score-exposure-review.md` | accepted: score-display policy becomes the rerank prompt baseline |
 | F3 | `rejected` | Candidate disambiguation block experiment | derived prompt comparison block only | state-specific, placeholder, and assessment ambiguity slices | review note: `docs/analysis/2026-04-06-disambiguation-block-review.md` | accepted: disambiguation block becomes the rerank prompt baseline |
 | F4 | `rejected` | Abstention wording calibration | abstention guidance wording only | selection rate, all-row accuracy, selected-row accuracy, abstain reason mix | review note: `docs/analysis/2026-04-06-abstention-calibration-review.md` | accepted: abstention wording becomes the rerank prompt baseline |
+| G1 | `accepted` | Canonical prompt-pack alignment checkpoint | reporting / comparison contract only | row-count parity and row-matched accepted baseline artifacts | review note: `docs/analysis/2026-04-14-canonical-prompt-pack-alignment-review.md` | accepted: `F2` row-matched artifact set becomes the default rerank comparison baseline |
+| G2 | `rejected` | Matcher-internal confidence label suppression | remove `confidence_band` and `match_selected_strategy` only | all-row top-1, selected-row top-1, wrong-top1-but-gold-in-shortlist rows, selection-rate stability | review note: `docs/analysis/2026-04-14-matcher-internal-label-suppression-review.md` | accepted: trimmed row-context contract becomes the rerank prompt baseline |
+| G3 | `rejected` | Derived ambiguity label suppression | remove `usage_ambiguity`, `state_specific_risk`, `placeholder_mapping`, and `assessment_slice` only | state-specific, placeholder, and assessment ambiguity slices | review note: `docs/analysis/2026-04-14-derived-ambiguity-label-suppression-review.md` | accepted: derived-row-label policy becomes the rerank prompt baseline |
+| G4 | `not started` | Candidate series exposure experiment | candidate `series` exposure only | near-duplicate families, wrong-top1-but-gold-in-shortlist rows, selected-row precision | review note: `docs/analysis/2026-04-14-series-exposure-review.md` | accepted: candidate-series exposure policy becomes the rerank prompt baseline |
 
 ## Exact Review Workflow
 

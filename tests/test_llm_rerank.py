@@ -1,4 +1,5 @@
 import unittest
+import json
 
 import pandas as pd
 
@@ -82,6 +83,18 @@ class LLMRerankTests(unittest.TestCase):
         self.assertEqual(prompt_record["candidate_ids"], ["cand_a", "cand_b"])
         self.assertIn("DISTRICT_ROW", prompt_record["user_prompt"])
         self.assertIn("SHORTLIST_CANDIDATES", prompt_record["user_prompt"])
+        district_row = json.loads(
+            prompt_record["user_prompt"].split("DISTRICT_ROW\n", 1)[1].split(
+                "\n\nSHORTLIST_CANDIDATES",
+                1,
+            )[0]
+        )
+        self.assertEqual(district_row["usage_ambiguity"], "implicit_usage")
+        self.assertEqual(district_row["state_specific_risk"], "catalog_state_specific_expected")
+        self.assertEqual(district_row["placeholder_mapping"], "catalog_unspecified")
+        self.assertEqual(district_row["assessment_slice"], "not_assessment")
+        self.assertEqual(district_row["confidence_band"], "low")
+        self.assertEqual(district_row["match_selected_strategy"], "title_plus_publisher")
 
     def test_extract_json_object_handles_fenced_json(self):
         response = extract_json_object(
