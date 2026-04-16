@@ -31,6 +31,21 @@ Locked baseline artifacts:
 
 Latest checkpoint:
 
+- `2026-04-16 08:41 AM MST`: `H2` measured and rejected; assessment-aware candidate recall did not beat the accepted char n-gram top-10 baseline
+- changed only an opt-in retrieval experiment path named `assessment_recall`, then restored the accepted code baseline after measurement
+- verified focused unit tests during measurement:
+  - `PYTHONPATH=src ./.venv/bin/python -m unittest tests/test_matcher_core.py`
+  - result: `19` tests passed
+- saved `H2` artifacts:
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_h2_assessment_recall_summary.json`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_h2_assessment_recall_records.csv`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_h2_assessment_recall_comparison.json`
+  - `docs/analysis/2026-04-16-assessment-recall-review.md`
+- overall deltas versus accepted char n-gram top-10 baseline: top-1 `+0.0000`, top-3 `+0.0000`, hit@10 `+0.0000`, MRR `+0.0000`, nDCG@10 `+0.0000`
+- required assessment slices did not improve: `Assessment`, `assessment_short_or_acronym_title`, `assessment_state_specific_expected`, and `assessment_publisher_missing` all had top-1 and hit@10 deltas of `+0.0000`
+- row movement existed but did not help: `51` changed shortlist rows, `16` changed metric rows, and `0 / 0` top-10 gains / losses
+- reject `H2`; no LLM batch was justified and no behavioral baseline changed
+- next roadmap movement is to start exactly `H3`, catalog-unspecified recovery, because H1 showed `catalog_unspecified` is strongly recall-limited and H2 did not move it
 - `2026-04-16 08:31 AM MST`: `H1` measured and accepted as a diagnostic checkpoint; no matcher, retrieval, shortlist, rerank prompt, model, or reasoning behavior changed
 - added a reusable shortlist failure audit script:
   - `scripts/report_shortlist_failure_audit.py`
@@ -341,7 +356,7 @@ Running baseline note:
 | G3 | `rejected` | Derived ambiguity label suppression | remove `usage_ambiguity`, `state_specific_risk`, `placeholder_mapping`, and `assessment_slice` only | state-specific, placeholder, and assessment ambiguity slices | review note: `docs/analysis/2026-04-14-derived-ambiguity-label-suppression-review.md` | accepted: derived-row-label policy becomes the rerank prompt baseline |
 | G4 | `rejected` | Candidate series exposure experiment | candidate `series` exposure only | near-duplicate families, wrong-top1-but-gold-in-shortlist rows, selected-row precision | review note: `docs/analysis/2026-04-14-series-exposure-review.md` | accepted: candidate-series exposure policy becomes the rerank prompt baseline |
 | H1 | `accepted` | Shortlist failure audit checkpoint | reporting / diagnosis only | split hard slices into gold-absent-from-top10 vs gold-present-but-not-selected buckets | review note: `docs/analysis/2026-04-16-shortlist-failure-audit.md` | accepted: no behavioral baseline change |
-| H2 | `not started` | Assessment-aware candidate recall experiment | assessment-row candidate recall policy only | `Assessment`, `assessment_short_or_acronym_title`, `assessment_state_specific_expected`, overall top-1 / hit@10 stability | review note TBD | accepted: assessment candidate recall policy becomes part of retrieval baseline |
+| H2 | `rejected` | Assessment-aware candidate recall experiment | assessment-row candidate recall policy only | `Assessment`, `assessment_short_or_acronym_title`, `assessment_state_specific_expected`, overall top-1 / hit@10 stability | review note: `docs/analysis/2026-04-16-assessment-recall-review.md` | rejected: no retrieval baseline change |
 | H3 | `not started` | Catalog-unspecified recovery experiment | conservative `Unspecified` / placeholder-family candidate handling only | `catalog_unspecified`, sparse and medium evidence rows, repaired / invalid selected-id risk | review note TBD | accepted: unspecified recovery policy becomes part of retrieval baseline |
 | H4 | `not started` | State-specific candidate balancing experiment | state-specific candidate balancing only | `adoption_state_high_risk`, `catalog_state_specific_expected`, assessment rows inside adoption states | review note TBD | accepted: state-specific candidate balancing becomes part of retrieval baseline |
 

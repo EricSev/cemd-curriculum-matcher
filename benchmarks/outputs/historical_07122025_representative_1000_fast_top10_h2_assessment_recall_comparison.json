@@ -1,0 +1,66 @@
+{
+  "row_count": 1000,
+  "shortlist_changed_rows": 51,
+  "metrics_changed_rows": 16,
+  "top1_correct_gains": 0,
+  "top1_correct_losses": 0,
+  "top3_correct_gains": 0,
+  "top3_correct_losses": 0,
+  "top10_correct_gains": 0,
+  "top10_correct_losses": 0,
+  "Assessment": {
+    "row_count": 260,
+    "shortlist_changed_rows": 51,
+    "metrics_changed_rows": 16,
+    "top1_gains": 0,
+    "top1_losses": 0,
+    "top3_gains": 0,
+    "top3_losses": 0,
+    "top10_gains": 0,
+    "top10_losses": 0
+  },
+  "assessment_short_or_acronym_title": {
+    "row_count": 161,
+    "shortlist_changed_rows": 44,
+    "metrics_changed_rows": 11,
+    "top1_gains": 0,
+    "top1_losses": 0,
+    "top3_gains": 0,
+    "top3_losses": 0,
+    "top10_gains": 0,
+    "top10_losses": 0
+  },
+  "assessment_state_specific_expected": {
+    "row_count": 7,
+    "shortlist_changed_rows": 1,
+    "metrics_changed_rows": 1,
+    "top1_gains": 0,
+    "top1_losses": 0,
+    "top3_gains": 0,
+    "top3_losses": 0,
+    "top10_gains": 0,
+    "top10_losses": 0
+  },
+  "catalog_unspecified": {
+    "row_count": 56,
+    "shortlist_changed_rows": 0,
+    "metrics_changed_rows": 0,
+    "top1_gains": 0,
+    "top1_losses": 0,
+    "top3_gains": 0,
+    "top3_losses": 0,
+    "top10_gains": 0,
+    "top10_losses": 0
+  },
+  "adoption_state_high_risk": {
+    "row_count": 349,
+    "shortlist_changed_rows": 6,
+    "metrics_changed_rows": 3,
+    "top1_gains": 0,
+    "top1_losses": 0,
+    "top3_gains": 0,
+    "top3_losses": 0,
+    "top10_gains": 0,
+    "top10_losses": 0
+  }
+}

@@ -1,0 +1,2514 @@
+{
+  "benchmark_file": "benchmarks/gold/historical_07122025_representative_1000.csv",
+  "catalog_file": "/Users/ericseverson/Library/CloudStorage/OneDrive-Personal/Consulting/Meg/02-data/evaluation/historical-runs/Test Data 004/CEMD Product Catalog - 07122025.csv",
+  "profile": "fast",
+  "rerank_experiment": "default",
+  "cross_encoder_model": null,
+  "expected_id_column": "expected_product_identifier",
+  "topn_final": 10,
+  "record_count": 1000,
+  "top1_accuracy": 0.488,
+  "top3_recall": 0.574,
+  "prediction_rate": 0.954,
+  "mean_top1_score": 0.5078,
+  "mean_correct_top1_score": 0.5636,
+  "shortlist_metrics": {
+    "hit_rate_at_1": 0.488,
+    "hit_rate_at_3": 0.574,
+    "hit_rate_at_10": 0.628,
+    "mrr": 0.5374,
+    "ndcg_at_10": 0.5596,
+    "available_cutoffs": [
+      1,
+      3,
+      10
+    ]
+  },
+  "confidence_bands": {
+    "high": {
+      "count": 68,
+      "top1_accuracy": 0.8088,
+      "top3_recall": 0.9265,
+      "top10_recall": 0.9559,
+      "mrr": 0.8676,
+      "ndcg_at_10": 0.8899
+    },
+    "low": {
+      "count": 401,
+      "top1_accuracy": 0.5037,
+      "top3_recall": 0.5835,
+      "top10_recall": 0.6209,
+      "mrr": 0.5478,
+      "ndcg_at_10": 0.5659
+    },
+    "medium": {
+      "count": 446,
+      "top1_accuracy": 0.5179,
+      "top3_recall": 0.6211,
+      "top10_recall": 0.7018,
+      "mrr": 0.5797,
+      "ndcg_at_10": 0.6094
+    },
+    "no_prediction": {
+      "count": 46,
+      "top1_accuracy": 0.0,
+      "top3_recall": 0.0,
+      "top10_recall": 0.0,
+      "mrr": 0.0,
+      "ndcg_at_10": 0.0
+    },
+    "very_low": {
+      "count": 39,
+      "top1_accuracy": 0.0,
+      "top3_recall": 0.0,
+      "top10_recall": 0.0256,
+      "mrr": 0.0043,
+      "ndcg_at_10": 0.0091
+    }
+  },
+  "repair_metrics": {
+    "repair_attempt_rate": 0.671,
+    "fallback_usage_rate": 0.278,
+    "selected_strategy_counts": {
+      "primary": 722,
+      "title_plus_publisher": 265,
+      "publisher_as_title": 13
+    }
+  },
+  "slice_metrics": {
+    "subject": {
+      "All": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "ELA": {
+        "count": 437,
+        "top1_accuracy": 0.5034,
+        "top3_recall": 0.5767,
+        "top10_recall": 0.6178,
+        "mrr": 0.5446,
+        "ndcg_at_10": 0.5626
+      },
+      "Math": {
+        "count": 350,
+        "top1_accuracy": 0.4514,
+        "top3_recall": 0.5457,
+        "top10_recall": 0.6171,
+        "mrr": 0.5092,
+        "ndcg_at_10": 0.5356
+      },
+      "Science": {
+        "count": 115,
+        "top1_accuracy": 0.513,
+        "top3_recall": 0.6435,
+        "top10_recall": 0.6957,
+        "mrr": 0.5802,
+        "ndcg_at_10": 0.6086
+      },
+      "Social Studies": {
+        "count": 97,
+        "top1_accuracy": 0.5258,
+        "top3_recall": 0.5876,
+        "top10_recall": 0.6392,
+        "mrr": 0.5612,
+        "ndcg_at_10": 0.58
+      }
+    },
+    "product_type_usage": {
+      "Assessment": {
+        "count": 260,
+        "top1_accuracy": 0.3654,
+        "top3_recall": 0.4038,
+        "top10_recall": 0.4538,
+        "mrr": 0.392,
+        "ndcg_at_10": 0.4066
+      },
+      "Core Curriculum": {
+        "count": 412,
+        "top1_accuracy": 0.4587,
+        "top3_recall": 0.5583,
+        "top10_recall": 0.6238,
+        "mrr": 0.5169,
+        "ndcg_at_10": 0.5431
+      },
+      "Supplemental": {
+        "count": 328,
+        "top1_accuracy": 0.622,
+        "top3_recall": 0.7287,
+        "top10_recall": 0.7713,
+        "mrr": 0.6784,
+        "ndcg_at_10": 0.7015
+      }
+    },
+    "state": {
+      "AK": {
+        "count": 11,
+        "top1_accuracy": 0.7273,
+        "top3_recall": 0.7273,
+        "top10_recall": 0.7273,
+        "mrr": 0.7273,
+        "ndcg_at_10": 0.7273
+      },
+      "AL": {
+        "count": 16,
+        "top1_accuracy": 0.5625,
+        "top3_recall": 0.6875,
+        "top10_recall": 0.75,
+        "mrr": 0.6406,
+        "ndcg_at_10": 0.6683
+      },
+      "AR": {
+        "count": 9,
+        "top1_accuracy": 0.2222,
+        "top3_recall": 0.4444,
+        "top10_recall": 0.6667,
+        "mrr": 0.377,
+        "ndcg_at_10": 0.4473
+      },
+      "AZ": {
+        "count": 33,
+        "top1_accuracy": 0.5455,
+        "top3_recall": 0.6061,
+        "top10_recall": 0.7879,
+        "mrr": 0.6099,
+        "ndcg_at_10": 0.6524
+      },
+      "CA": {
+        "count": 275,
+        "top1_accuracy": 0.4582,
+        "top3_recall": 0.5345,
+        "top10_recall": 0.56,
+        "mrr": 0.4978,
+        "ndcg_at_10": 0.5133
+      },
+      "CO": {
+        "count": 27,
+        "top1_accuracy": 0.5556,
+        "top3_recall": 0.7407,
+        "top10_recall": 0.7778,
+        "mrr": 0.6451,
+        "ndcg_at_10": 0.6786
+      },
+      "CT": {
+        "count": 5,
+        "top1_accuracy": 0.6,
+        "top3_recall": 0.8,
+        "top10_recall": 0.8,
+        "mrr": 0.7,
+        "ndcg_at_10": 0.7262
+      },
+      "FL": {
+        "count": 70,
+        "top1_accuracy": 0.6,
+        "top3_recall": 0.6286,
+        "top10_recall": 0.6714,
+        "mrr": 0.6215,
+        "ndcg_at_10": 0.6332
+      },
+      "GA": {
+        "count": 35,
+        "top1_accuracy": 0.3429,
+        "top3_recall": 0.4286,
+        "top10_recall": 0.4857,
+        "mrr": 0.3969,
+        "ndcg_at_10": 0.4188
+      },
+      "IA": {
+        "count": 4,
+        "top1_accuracy": 0.25,
+        "top3_recall": 0.25,
+        "top10_recall": 0.25,
+        "mrr": 0.25,
+        "ndcg_at_10": 0.25
+      },
+      "ID": {
+        "count": 7,
+        "top1_accuracy": 0.4286,
+        "top3_recall": 0.5714,
+        "top10_recall": 0.7143,
+        "mrr": 0.5179,
+        "ndcg_at_10": 0.5638
+      },
+      "IL": {
+        "count": 31,
+        "top1_accuracy": 0.5161,
+        "top3_recall": 0.5806,
+        "top10_recall": 0.6452,
+        "mrr": 0.5511,
+        "ndcg_at_10": 0.573
+      },
+      "IN": {
+        "count": 18,
+        "top1_accuracy": 0.4444,
+        "top3_recall": 0.5,
+        "top10_recall": 0.5556,
+        "mrr": 0.4768,
+        "ndcg_at_10": 0.4961
+      },
+      "KS": {
+        "count": 6,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.6667,
+        "mrr": 0.5555,
+        "ndcg_at_10": 0.5833
+      },
+      "KY": {
+        "count": 5,
+        "top1_accuracy": 0.2,
+        "top3_recall": 0.6,
+        "top10_recall": 0.8,
+        "mrr": 0.45,
+        "ndcg_at_10": 0.5385
+      },
+      "LA": {
+        "count": 9,
+        "top1_accuracy": 0.5556,
+        "top3_recall": 0.7778,
+        "top10_recall": 1.0,
+        "mrr": 0.7111,
+        "ndcg_at_10": 0.7817
+      },
+      "MA": {
+        "count": 7,
+        "top1_accuracy": 0.7143,
+        "top3_recall": 0.8571,
+        "top10_recall": 0.8571,
+        "mrr": 0.7619,
+        "ndcg_at_10": 0.7857
+      },
+      "MD": {
+        "count": 14,
+        "top1_accuracy": 0.4286,
+        "top3_recall": 0.4286,
+        "top10_recall": 0.5714,
+        "mrr": 0.4524,
+        "ndcg_at_10": 0.4795
+      },
+      "ME": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "MI": {
+        "count": 11,
+        "top1_accuracy": 0.1818,
+        "top3_recall": 0.2727,
+        "top10_recall": 0.3636,
+        "mrr": 0.2273,
+        "ndcg_at_10": 0.2597
+      },
+      "MN": {
+        "count": 12,
+        "top1_accuracy": 0.6667,
+        "top3_recall": 0.75,
+        "top10_recall": 0.75,
+        "mrr": 0.7083,
+        "ndcg_at_10": 0.7192
+      },
+      "MO": {
+        "count": 14,
+        "top1_accuracy": 0.6429,
+        "top3_recall": 0.6429,
+        "top10_recall": 0.7143,
+        "mrr": 0.6548,
+        "ndcg_at_10": 0.6683
+      },
+      "MS": {
+        "count": 6,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.8333,
+        "mrr": 0.4861,
+        "ndcg_at_10": 0.5718
+      },
+      "MT": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "NC": {
+        "count": 24,
+        "top1_accuracy": 0.625,
+        "top3_recall": 0.75,
+        "top10_recall": 0.75,
+        "mrr": 0.6875,
+        "ndcg_at_10": 0.7039
+      },
+      "ND": {
+        "count": 3,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.3333,
+        "top10_recall": 0.3333,
+        "mrr": 0.3333,
+        "ndcg_at_10": 0.3333
+      },
+      "NE": {
+        "count": 5,
+        "top1_accuracy": 0.6,
+        "top3_recall": 0.6,
+        "top10_recall": 0.6,
+        "mrr": 0.6,
+        "ndcg_at_10": 0.6
+      },
+      "NH": {
+        "count": 6,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.6667,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.5436
+      },
+      "NJ": {
+        "count": 49,
+        "top1_accuracy": 0.5306,
+        "top3_recall": 0.6531,
+        "top10_recall": 0.6735,
+        "mrr": 0.5891,
+        "ndcg_at_10": 0.6104
+      },
+      "NM": {
+        "count": 15,
+        "top1_accuracy": 0.5333,
+        "top3_recall": 0.7333,
+        "top10_recall": 0.8,
+        "mrr": 0.6222,
+        "ndcg_at_10": 0.6658
+      },
+      "NV": {
+        "count": 6,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.8333,
+        "mrr": 0.625,
+        "ndcg_at_10": 0.6769
+      },
+      "NY": {
+        "count": 13,
+        "top1_accuracy": 0.5385,
+        "top3_recall": 0.6154,
+        "top10_recall": 0.6154,
+        "mrr": 0.5641,
+        "ndcg_at_10": 0.5769
+      },
+      "OH": {
+        "count": 14,
+        "top1_accuracy": 0.5714,
+        "top3_recall": 0.5714,
+        "top10_recall": 0.5714,
+        "mrr": 0.5714,
+        "ndcg_at_10": 0.5714
+      },
+      "OK": {
+        "count": 15,
+        "top1_accuracy": 0.4,
+        "top3_recall": 0.5333,
+        "top10_recall": 0.6,
+        "mrr": 0.463,
+        "ndcg_at_10": 0.4955
+      },
+      "OR": {
+        "count": 8,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.5,
+        "top10_recall": 0.5,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.5
+      },
+      "PA": {
+        "count": 18,
+        "top1_accuracy": 0.3889,
+        "top3_recall": 0.6111,
+        "top10_recall": 0.6667,
+        "mrr": 0.5019,
+        "ndcg_at_10": 0.5433
+      },
+      "RI": {
+        "count": 7,
+        "top1_accuracy": 0.7143,
+        "top3_recall": 0.7143,
+        "top10_recall": 0.7143,
+        "mrr": 0.7143,
+        "ndcg_at_10": 0.7143
+      },
+      "SC": {
+        "count": 22,
+        "top1_accuracy": 0.7273,
+        "top3_recall": 0.7727,
+        "top10_recall": 0.8182,
+        "mrr": 0.7614,
+        "ndcg_at_10": 0.7755
+      },
+      "SD": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "TN": {
+        "count": 19,
+        "top1_accuracy": 0.3158,
+        "top3_recall": 0.3684,
+        "top10_recall": 0.4737,
+        "mrr": 0.3684,
+        "ndcg_at_10": 0.3943
+      },
+      "TX": {
+        "count": 57,
+        "top1_accuracy": 0.4561,
+        "top3_recall": 0.5263,
+        "top10_recall": 0.6491,
+        "mrr": 0.5093,
+        "ndcg_at_10": 0.5422
+      },
+      "UT": {
+        "count": 18,
+        "top1_accuracy": 0.6111,
+        "top3_recall": 0.7778,
+        "top10_recall": 0.7778,
+        "mrr": 0.6852,
+        "ndcg_at_10": 0.709
+      },
+      "VA": {
+        "count": 31,
+        "top1_accuracy": 0.2903,
+        "top3_recall": 0.3871,
+        "top10_recall": 0.4516,
+        "mrr": 0.3495,
+        "ndcg_at_10": 0.3749
+      },
+      "WA": {
+        "count": 29,
+        "top1_accuracy": 0.5172,
+        "top3_recall": 0.5172,
+        "top10_recall": 0.5862,
+        "mrr": 0.5316,
+        "ndcg_at_10": 0.5444
+      },
+      "WI": {
+        "count": 6,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.3333,
+        "top10_recall": 0.5,
+        "mrr": 0.375,
+        "ndcg_at_10": 0.4051
+      },
+      "WV": {
+        "count": 3,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.3333,
+        "top10_recall": 0.3333,
+        "mrr": 0.3333,
+        "ndcg_at_10": 0.3333
+      },
+      "WY": {
+        "count": 4,
+        "top1_accuracy": 0.25,
+        "top3_recall": 0.25,
+        "top10_recall": 0.25,
+        "mrr": 0.25,
+        "ndcg_at_10": 0.25
+      }
+    },
+    "publisher_raw": {
+      "ACCESS": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "ACT": {
+        "count": 3,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "ACT Practice Tests": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Accelerate Learning": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Acellus": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Achieve3000 (McGraw Hill Education) - (K-12)": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Actively Learn": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Agile Mind": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "American Guidance Service Inc": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "American Reading Company": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Amplify": {
+        "count": 4,
+        "top1_accuracy": 0.25,
+        "top3_recall": 0.25,
+        "top10_recall": 0.25,
+        "mrr": 0.25,
+        "ndcg_at_10": 0.25
+      },
+      "Amplify Education": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Arizona Department of Education": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "BE Publishing": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 1.0,
+        "mrr": 0.1111,
+        "ndcg_at_10": 0.301
+      },
+      "BEDFORD, FREEMAN & WORTH PUBLISHERS": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "BFW": {
+        "count": 4,
+        "top1_accuracy": 0.25,
+        "top3_recall": 0.25,
+        "top10_recall": 0.25,
+        "mrr": 0.25,
+        "ndcg_at_10": 0.25
+      },
+      "BFW Freeman": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Bedford St. Martins": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Bedford, Freeman & Worth": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Bedford, Freeman and Worth (Macmillan Holdings LLC)": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Bedford, Freeman, & Worth": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Bedford, Freeman, and Worth": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Benchmark Education Company": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.6309
+      },
+      "Book Adventure": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "BrainPOP": {
+        "count": 2,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "BrainPop - (K-12)": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Breakout EDU": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "BrightThinker": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Brilliant Worldwide": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "CENGAGE": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "CK-12": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "CSU": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "California Department of Education": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "California Department of Education (CDE)": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "California Department of Education (CDE) / Smarter Balanced Assessment Consortium (SBAC)": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Cambium Assessment": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Carolina": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Carolina Biological": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Cengage": {
+        "count": 16,
+        "top1_accuracy": 0.625,
+        "top3_recall": 0.6875,
+        "top10_recall": 0.6875,
+        "mrr": 0.6562,
+        "ndcg_at_10": 0.6644
+      },
+      "Cengage - National Geographic": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Cengage Learning": {
+        "count": 5,
+        "top1_accuracy": 0.6,
+        "top3_recall": 0.8,
+        "top10_recall": 0.8,
+        "mrr": 0.7,
+        "ndcg_at_10": 0.7262
+      },
+      "College Board": {
+        "count": 5,
+        "top1_accuracy": 0.4,
+        "top3_recall": 0.4,
+        "top10_recall": 0.6,
+        "mrr": 0.45,
+        "ndcg_at_10": 0.4861
+      },
+      "College Preparatory Mathematics": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "CommonLit": {
+        "count": 3,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Curriculum Associates": {
+        "count": 4,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "DRA": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "DSD - District Created": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "David Starkey": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Delta Education": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Desmos": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Discovery Education": {
+        "count": 3,
+        "top1_accuracy": 0.6667,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.6667,
+        "mrr": 0.6667,
+        "ndcg_at_10": 0.6667
+      },
+      "DreamBox": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Dynamic Learning Maps": {
+        "count": 2,
+        "top1_accuracy": 0.5,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.6666,
+        "ndcg_at_10": 0.75
+      },
+      "EdGems": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Edmentum": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "EngageNY - EngageNY Mathematics": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "English Language Proficiency Assessment for the 21st Century (ELPA21)": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Epic!": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Epic! Creations": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Ergopedia": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.6309
+      },
+      "FOSS": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.6309
+      },
+      "Fastbridge": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Florida Transformative Education": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Funbrain Holdings": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "GAA 2.0": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Glencoe": {
+        "count": 4,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.5,
+        "top10_recall": 0.5,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.5
+      },
+      "Glencoe/ McGraw-Hill": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Glencoe/McGraw Hill": {
+        "count": 2,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Go Math": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "GoNoodle, INC": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Great Minds": {
+        "count": 2,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.5,
+        "top10_recall": 1.0,
+        "mrr": 0.5834,
+        "ndcg_at_10": 0.6781
+      },
+      "Great Source": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "HMH": {
+        "count": 7,
+        "top1_accuracy": 0.5714,
+        "top3_recall": 0.5714,
+        "top10_recall": 0.7143,
+        "mrr": 0.6,
+        "ndcg_at_10": 0.6267
+      },
+      "HOLT MCDOUGAL": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Harcourt": {
+        "count": 3,
+        "top1_accuracy": 0.6667,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.6667,
+        "mrr": 0.6667,
+        "ndcg_at_10": 0.6667
+      },
+      "Heineman": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Heinemann": {
+        "count": 2,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.5,
+        "top10_recall": 0.5,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.5
+      },
+      "Heinemann Publishing": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Holt": {
+        "count": 3,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Holt McDougall": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Holt, Rinehart and Winston": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Houghton Mifflin": {
+        "count": 3,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.3333,
+        "top10_recall": 0.3333,
+        "mrr": 0.3333,
+        "ndcg_at_10": 0.3333
+      },
+      "Houghton Mifflin Harcourt": {
+        "count": 15,
+        "top1_accuracy": 0.5333,
+        "top3_recall": 0.6,
+        "top10_recall": 0.6,
+        "mrr": 0.5667,
+        "ndcg_at_10": 0.5754
+      },
+      "Houghton-Mifflin-Harcourt": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "IXL": {
+        "count": 2,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.5,
+        "top10_recall": 0.5,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.5
+      },
+      "Illuminate Education": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Imagine Learning": {
+        "count": 5,
+        "top1_accuracy": 0.4,
+        "top3_recall": 0.6,
+        "top10_recall": 0.8,
+        "mrr": 0.55,
+        "ndcg_at_10": 0.6123
+      },
+      "Istation": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "J. Banfill": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Jenny Eather": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Karleskint, Turner and Small": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.6309
+      },
+      "Kendall Hunt": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Khan Academy": {
+        "count": 7,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Larson Texts": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "MCGRAW-HILL": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "MGH": {
+        "count": 14,
+        "top1_accuracy": 0.2143,
+        "top3_recall": 0.4286,
+        "top10_recall": 0.4286,
+        "mrr": 0.2976,
+        "ndcg_at_10": 0.3308
+      },
+      "MGH/Glencoe": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Mackin": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Maryland Department of Education": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Math Nation": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Math Playground": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "McDougal Littell": {
+        "count": 3,
+        "top1_accuracy": 0.6667,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.8333,
+        "ndcg_at_10": 0.877
+      },
+      "McDougall Littell": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "McGraw Hill": {
+        "count": 18,
+        "top1_accuracy": 0.6667,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.6667,
+        "mrr": 0.6667,
+        "ndcg_at_10": 0.6667
+      },
+      "McGraw Hill Education": {
+        "count": 7,
+        "top1_accuracy": 0.5714,
+        "top3_recall": 0.5714,
+        "top10_recall": 0.5714,
+        "mrr": 0.5714,
+        "ndcg_at_10": 0.5714
+      },
+      "McGraw Hill LLC": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "McGraw Hill/Wright Group": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "McGraw-Hill": {
+        "count": 10,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.6,
+        "top10_recall": 0.7,
+        "mrr": 0.575,
+        "ndcg_at_10": 0.6062
+      },
+      "McGraw-Hill Brinkley": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "McGraw-Hill School Education, LLC": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.6309
+      },
+      "McGraw-Hill School Education, LLC.": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Measures English language proficiency": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Microsoft": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Mystery Science": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "NGL/Cengage": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "NJDOE": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "NWEA": {
+        "count": 5,
+        "top1_accuracy": 0.2,
+        "top3_recall": 0.4,
+        "top10_recall": 0.4,
+        "mrr": 0.2667,
+        "ndcg_at_10": 0.3
+      },
+      "NY State Education Department": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "NatGeo/Cengage": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "National Council of Teachers of Mathematics (NCTM)": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "National Geographic": {
+        "count": 2,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Nearpod": {
+        "count": 2,
+        "top1_accuracy": 0.5,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.6666,
+        "ndcg_at_10": 0.75
+      },
+      "New York State": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Newsela": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "NoRedInk": {
+        "count": 2,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Norton": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Open Resources": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Open Up Math": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "PBS": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "PH": {
+        "count": 2,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Pear Deck Learning": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "PearSon School": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Pearson": {
+        "count": 17,
+        "top1_accuracy": 0.4706,
+        "top3_recall": 0.6471,
+        "top10_recall": 0.7059,
+        "mrr": 0.5457,
+        "ndcg_at_10": 0.5842
+      },
+      "Pearson Education": {
+        "count": 3,
+        "top1_accuracy": 0.6667,
+        "top3_recall": 0.6667,
+        "top10_recall": 1.0,
+        "mrr": 0.75,
+        "ndcg_at_10": 0.8102
+      },
+      "Pearson Mastering": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Pearson Prentice Hall": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Pearson, Scott, Foresman": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Pearson/Prentice Hall": {
+        "count": 2,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.5,
+        "top10_recall": 1.0,
+        "mrr": 0.2916,
+        "ndcg_at_10": 0.4654
+      },
+      "Perfect Learning": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Prentice Hall": {
+        "count": 5,
+        "top1_accuracy": 0.4,
+        "top3_recall": 0.4,
+        "top10_recall": 0.4,
+        "mrr": 0.4,
+        "ndcg_at_10": 0.4
+      },
+      "ProQuest": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Prodigy": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Quizizz": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Read 180": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Read Naturally": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Renaissance": {
+        "count": 3,
+        "top1_accuracy": 0.6667,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.6667,
+        "mrr": 0.6667,
+        "ndcg_at_10": 0.6667
+      },
+      "Renaissance Reading": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "SAT": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "SAVVAS": {
+        "count": 3,
+        "top1_accuracy": 0.6667,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.6667,
+        "mrr": 0.6667,
+        "ndcg_at_10": 0.6667
+      },
+      "SAVVAS Learning Company": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "STAAR/TELPAS": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "STAR Reading": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Savvas": {
+        "count": 16,
+        "top1_accuracy": 0.5625,
+        "top3_recall": 0.625,
+        "top10_recall": 0.75,
+        "mrr": 0.6146,
+        "ndcg_at_10": 0.6476
+      },
+      "Savvas Learning": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Savvas Learning Company": {
+        "count": 6,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.6667,
+        "top10_recall": 0.8333,
+        "mrr": 0.5417,
+        "ndcg_at_10": 0.6154
+      },
+      "Savvas Realize": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Scholastic": {
+        "count": 2,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.5,
+        "top10_recall": 0.5,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.5
+      },
+      "Seesaw": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Smarter Balanced": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Sopris West": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Starfall Education Foundation": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Studies Weely": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.6309
+      },
+      "SumDog": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "TCI": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "TELPAS": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Teachers\u00c3\u00a2\u00c2\u0080\u00c2\u0099 Curriculum Institute": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Teacher\u00c3\u00a2\u00c2\u0080\u00c2\u0099s Curriculum": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Teacher\u00c3\u00a2\u00c2\u0080\u00c2\u0099s Curriculum Institute": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Texas Education Agency": {
+        "count": 2,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.5,
+        "mrr": 0.125,
+        "ndcg_at_10": 0.2154
+      },
+      "Texthelp Ltd": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Thomas Wadsworth": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Twig Education Inc": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.3333,
+        "ndcg_at_10": 0.5
+      },
+      "U.S. Department of Education": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "US Department of Education": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "University of Wisconsin-Madison": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Voyager Sopris Learning": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "WeVideo": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Wilson Language Training": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "WriteShop": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "Yates/Moore Starnes,  W.H. Freeman": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 1.0,
+        "mrr": 0.25,
+        "ndcg_at_10": 0.4307
+      },
+      "glencoe": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "harcourt": {
+        "count": 3,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.3333,
+        "top10_recall": 0.3333,
+        "mrr": 0.3333,
+        "ndcg_at_10": 0.3333
+      },
+      "i-Ready": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "i-Ready - (K-8)": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "iReady": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "imagine learning": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.5,
+        "ndcg_at_10": 0.6309
+      },
+      "ncte": {
+        "count": 1,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "prentice hall": {
+        "count": 2,
+        "top1_accuracy": 0.5,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 0.6666,
+        "ndcg_at_10": 0.75
+      },
+      "savvas": {
+        "count": 2,
+        "top1_accuracy": 1.0,
+        "top3_recall": 1.0,
+        "top10_recall": 1.0,
+        "mrr": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      "missing": {
+        "count": 620,
+        "top1_accuracy": 0.4742,
+        "top3_recall": 0.5677,
+        "top10_recall": 0.6323,
+        "mrr": 0.5292,
+        "ndcg_at_10": 0.5543
+      }
+    },
+    "evidence_richness": {
+      "medium": {
+        "count": 449,
+        "top1_accuracy": 0.4454,
+        "top3_recall": 0.5122,
+        "top10_recall": 0.5813,
+        "mrr": 0.4886,
+        "ndcg_at_10": 0.5109
+      },
+      "policy_placeholder_no_info": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "rich": {
+        "count": 153,
+        "top1_accuracy": 0.5686,
+        "top3_recall": 0.6536,
+        "top10_recall": 0.6928,
+        "mrr": 0.6135,
+        "ndcg_at_10": 0.6331
+      },
+      "sparse": {
+        "count": 397,
+        "top1_accuracy": 0.5063,
+        "top3_recall": 0.6146,
+        "top10_recall": 0.6574,
+        "mrr": 0.5646,
+        "ndcg_at_10": 0.5877
+      }
+    },
+    "usage_ambiguity": {
+      "assessment_naming_regime": {
+        "count": 260,
+        "top1_accuracy": 0.3654,
+        "top3_recall": 0.4038,
+        "top10_recall": 0.4538,
+        "mrr": 0.392,
+        "ndcg_at_10": 0.4066
+      },
+      "explicit_usage": {
+        "count": 27,
+        "top1_accuracy": 0.4074,
+        "top3_recall": 0.5556,
+        "top10_recall": 0.6296,
+        "mrr": 0.4877,
+        "ndcg_at_10": 0.5231
+      },
+      "implicit_usage": {
+        "count": 713,
+        "top1_accuracy": 0.5358,
+        "top3_recall": 0.6367,
+        "top10_recall": 0.6914,
+        "mrr": 0.5923,
+        "ndcg_at_10": 0.6167
+      }
+    },
+    "state_specific_risk": {
+      "adoption_state_high_risk": {
+        "count": 349,
+        "top1_accuracy": 0.4842,
+        "top3_recall": 0.553,
+        "top10_recall": 0.5759,
+        "mrr": 0.5203,
+        "ndcg_at_10": 0.5341
+      },
+      "catalog_state_specific_expected": {
+        "count": 53,
+        "top1_accuracy": 0.4717,
+        "top3_recall": 0.5283,
+        "top10_recall": 0.6981,
+        "mrr": 0.5253,
+        "ndcg_at_10": 0.5653
+      },
+      "standard_state": {
+        "count": 598,
+        "top1_accuracy": 0.4916,
+        "top3_recall": 0.5903,
+        "top10_recall": 0.6522,
+        "mrr": 0.5484,
+        "ndcg_at_10": 0.5739
+      }
+    },
+    "placeholder_mapping": {
+      "catalog_unspecified": {
+        "count": 56,
+        "top1_accuracy": 0.0893,
+        "top3_recall": 0.1786,
+        "top10_recall": 0.3393,
+        "mrr": 0.1563,
+        "ndcg_at_10": 0.1998
+      },
+      "no_information_available": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "standard_catalog_mapping": {
+        "count": 943,
+        "top1_accuracy": 0.5122,
+        "top3_recall": 0.5981,
+        "top10_recall": 0.6458,
+        "mrr": 0.5606,
+        "ndcg_at_10": 0.5815
+      }
+    },
+    "assessment_slice": {
+      "assessment_other": {
+        "count": 11,
+        "top1_accuracy": 0.2727,
+        "top3_recall": 0.3636,
+        "top10_recall": 0.3636,
+        "mrr": 0.303,
+        "ndcg_at_10": 0.3182
+      },
+      "assessment_publisher_missing": {
+        "count": 81,
+        "top1_accuracy": 0.284,
+        "top3_recall": 0.321,
+        "top10_recall": 0.3951,
+        "mrr": 0.3169,
+        "ndcg_at_10": 0.3355
+      },
+      "assessment_short_or_acronym_title": {
+        "count": 161,
+        "top1_accuracy": 0.4286,
+        "top3_recall": 0.4658,
+        "top10_recall": 0.472,
+        "mrr": 0.4469,
+        "ndcg_at_10": 0.4532
+      },
+      "assessment_state_specific_expected": {
+        "count": 7,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.8571,
+        "mrr": 0.1352,
+        "ndcg_at_10": 0.2971
+      },
+      "not_assessment": {
+        "count": 740,
+        "top1_accuracy": 0.5311,
+        "top3_recall": 0.6338,
+        "top10_recall": 0.6892,
+        "mrr": 0.5885,
+        "ndcg_at_10": 0.6133
+      }
+    },
+    "assessment_short_or_acronym": {
+      "no": {
+        "count": 839,
+        "top1_accuracy": 0.4994,
+        "top3_recall": 0.5948,
+        "top10_recall": 0.6579,
+        "mrr": 0.5547,
+        "ndcg_at_10": 0.58
+      },
+      "yes": {
+        "count": 161,
+        "top1_accuracy": 0.4286,
+        "top3_recall": 0.4658,
+        "top10_recall": 0.472,
+        "mrr": 0.4469,
+        "ndcg_at_10": 0.4532
+      }
+    },
+    "assessment_publisher_missing": {
+      "no": {
+        "count": 782,
+        "top1_accuracy": 0.5256,
+        "top3_recall": 0.6253,
+        "top10_recall": 0.679,
+        "mrr": 0.581,
+        "ndcg_at_10": 0.6052
+      },
+      "yes": {
+        "count": 218,
+        "top1_accuracy": 0.3532,
+        "top3_recall": 0.3899,
+        "top10_recall": 0.445,
+        "mrr": 0.3807,
+        "ndcg_at_10": 0.3958
+      }
+    },
+    "assessment_state_specific_expected": {
+      "no": {
+        "count": 993,
+        "top1_accuracy": 0.4914,
+        "top3_recall": 0.578,
+        "top10_recall": 0.6264,
+        "mrr": 0.5402,
+        "ndcg_at_10": 0.5614
+      },
+      "yes": {
+        "count": 7,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.8571,
+        "mrr": 0.1352,
+        "ndcg_at_10": 0.2971
+      }
+    }
+  },
+  "cross_slice_metrics": {
+    "product_type_usage__x__evidence_richness": {
+      "Assessment | medium": {
+        "count": 124,
+        "top1_accuracy": 0.3306,
+        "top3_recall": 0.3629,
+        "top10_recall": 0.4516,
+        "mrr": 0.3605,
+        "ndcg_at_10": 0.3816
+      },
+      "Assessment | policy_placeholder_no_info": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Assessment | rich": {
+        "count": 9,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.4444,
+        "top10_recall": 0.5556,
+        "mrr": 0.3981,
+        "ndcg_at_10": 0.4367
+      },
+      "Assessment | sparse": {
+        "count": 126,
+        "top1_accuracy": 0.4048,
+        "top3_recall": 0.4444,
+        "top10_recall": 0.4524,
+        "mrr": 0.4256,
+        "ndcg_at_10": 0.4323
+      },
+      "Core Curriculum | medium": {
+        "count": 208,
+        "top1_accuracy": 0.4135,
+        "top3_recall": 0.5192,
+        "top10_recall": 0.601,
+        "mrr": 0.4783,
+        "ndcg_at_10": 0.5083
+      },
+      "Core Curriculum | rich": {
+        "count": 138,
+        "top1_accuracy": 0.587,
+        "top3_recall": 0.6739,
+        "top10_recall": 0.7029,
+        "mrr": 0.6306,
+        "ndcg_at_10": 0.6486
+      },
+      "Core Curriculum | sparse": {
+        "count": 66,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.4394,
+        "top10_recall": 0.5303,
+        "mrr": 0.4006,
+        "ndcg_at_10": 0.4321
+      },
+      "Supplemental | medium": {
+        "count": 117,
+        "top1_accuracy": 0.6239,
+        "top3_recall": 0.6581,
+        "top10_recall": 0.6838,
+        "mrr": 0.6426,
+        "ndcg_at_10": 0.6525
+      },
+      "Supplemental | rich": {
+        "count": 6,
+        "top1_accuracy": 0.5,
+        "top3_recall": 0.5,
+        "top10_recall": 0.6667,
+        "mrr": 0.5417,
+        "ndcg_at_10": 0.5718
+      },
+      "Supplemental | sparse": {
+        "count": 205,
+        "top1_accuracy": 0.6244,
+        "top3_recall": 0.7756,
+        "top10_recall": 0.8244,
+        "mrr": 0.7028,
+        "ndcg_at_10": 0.7333
+      }
+    },
+    "product_type_usage__x__placeholder_mapping": {
+      "Assessment | no_information_available": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Assessment | standard_catalog_mapping": {
+        "count": 259,
+        "top1_accuracy": 0.3668,
+        "top3_recall": 0.4054,
+        "top10_recall": 0.4556,
+        "mrr": 0.3935,
+        "ndcg_at_10": 0.4082
+      },
+      "Core Curriculum | catalog_unspecified": {
+        "count": 50,
+        "top1_accuracy": 0.06,
+        "top3_recall": 0.16,
+        "top10_recall": 0.34,
+        "mrr": 0.135,
+        "ndcg_at_10": 0.1838
+      },
+      "Core Curriculum | standard_catalog_mapping": {
+        "count": 362,
+        "top1_accuracy": 0.5138,
+        "top3_recall": 0.6133,
+        "top10_recall": 0.663,
+        "mrr": 0.5696,
+        "ndcg_at_10": 0.5927
+      },
+      "Supplemental | catalog_unspecified": {
+        "count": 6,
+        "top1_accuracy": 0.3333,
+        "top3_recall": 0.3333,
+        "top10_recall": 0.3333,
+        "mrr": 0.3333,
+        "ndcg_at_10": 0.3333
+      },
+      "Supplemental | standard_catalog_mapping": {
+        "count": 322,
+        "top1_accuracy": 0.6273,
+        "top3_recall": 0.736,
+        "top10_recall": 0.7795,
+        "mrr": 0.6848,
+        "ndcg_at_10": 0.7084
+      }
+    },
+    "product_type_usage__x__state_specific_risk": {
+      "Assessment | adoption_state_high_risk": {
+        "count": 80,
+        "top1_accuracy": 0.275,
+        "top3_recall": 0.3375,
+        "top10_recall": 0.3375,
+        "mrr": 0.3042,
+        "ndcg_at_10": 0.3128
+      },
+      "Assessment | catalog_state_specific_expected": {
+        "count": 7,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.8571,
+        "mrr": 0.1352,
+        "ndcg_at_10": 0.2971
+      },
+      "Assessment | standard_state": {
+        "count": 173,
+        "top1_accuracy": 0.422,
+        "top3_recall": 0.4509,
+        "top10_recall": 0.4913,
+        "mrr": 0.4429,
+        "ndcg_at_10": 0.4545
+      },
+      "Core Curriculum | adoption_state_high_risk": {
+        "count": 169,
+        "top1_accuracy": 0.4852,
+        "top3_recall": 0.5562,
+        "top10_recall": 0.5917,
+        "mrr": 0.5241,
+        "ndcg_at_10": 0.5407
+      },
+      "Core Curriculum | catalog_state_specific_expected": {
+        "count": 45,
+        "top1_accuracy": 0.5556,
+        "top3_recall": 0.6222,
+        "top10_recall": 0.6889,
+        "mrr": 0.5977,
+        "ndcg_at_10": 0.6196
+      },
+      "Core Curriculum | standard_state": {
+        "count": 198,
+        "top1_accuracy": 0.4141,
+        "top3_recall": 0.5455,
+        "top10_recall": 0.6364,
+        "mrr": 0.4923,
+        "ndcg_at_10": 0.5277
+      },
+      "Supplemental | adoption_state_high_risk": {
+        "count": 100,
+        "top1_accuracy": 0.65,
+        "top3_recall": 0.72,
+        "top10_recall": 0.74,
+        "mrr": 0.6867,
+        "ndcg_at_10": 0.7002
+      },
+      "Supplemental | catalog_state_specific_expected": {
+        "count": 1,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.0,
+        "mrr": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      "Supplemental | standard_state": {
+        "count": 227,
+        "top1_accuracy": 0.6123,
+        "top3_recall": 0.7357,
+        "top10_recall": 0.7885,
+        "mrr": 0.6777,
+        "ndcg_at_10": 0.7052
+      }
+    },
+    "product_type_usage__x__assessment_slice": {
+      "Assessment | assessment_other": {
+        "count": 11,
+        "top1_accuracy": 0.2727,
+        "top3_recall": 0.3636,
+        "top10_recall": 0.3636,
+        "mrr": 0.303,
+        "ndcg_at_10": 0.3182
+      },
+      "Assessment | assessment_publisher_missing": {
+        "count": 81,
+        "top1_accuracy": 0.284,
+        "top3_recall": 0.321,
+        "top10_recall": 0.3951,
+        "mrr": 0.3169,
+        "ndcg_at_10": 0.3355
+      },
+      "Assessment | assessment_short_or_acronym_title": {
+        "count": 161,
+        "top1_accuracy": 0.4286,
+        "top3_recall": 0.4658,
+        "top10_recall": 0.472,
+        "mrr": 0.4469,
+        "ndcg_at_10": 0.4532
+      },
+      "Assessment | assessment_state_specific_expected": {
+        "count": 7,
+        "top1_accuracy": 0.0,
+        "top3_recall": 0.0,
+        "top10_recall": 0.8571,
+        "mrr": 0.1352,
+        "ndcg_at_10": 0.2971
+      },
+      "Core Curriculum | not_assessment": {
+        "count": 412,
+        "top1_accuracy": 0.4587,
+        "top3_recall": 0.5583,
+        "top10_recall": 0.6238,
+        "mrr": 0.5169,
+        "ndcg_at_10": 0.5431
+      },
+      "Supplemental | not_assessment": {
+        "count": 328,
+        "top1_accuracy": 0.622,
+        "top3_recall": 0.7287,
+        "top10_recall": 0.7713,
+        "mrr": 0.6784,
+        "ndcg_at_10": 0.7015
+      }
+    }
+  }
+}
