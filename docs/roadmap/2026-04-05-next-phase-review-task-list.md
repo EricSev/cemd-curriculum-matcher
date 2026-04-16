@@ -31,6 +31,21 @@ Locked baseline artifacts:
 
 Latest checkpoint:
 
+- `2026-04-16 08:49 AM MST`: `H3` measured and rejected; catalog-unspecified recovery did not beat the accepted char n-gram top-10 baseline
+- changed only an opt-in retrieval experiment path named `unspecified_recall`, then restored the accepted code baseline after measurement
+- verified focused unit tests during measurement:
+  - `PYTHONPATH=src ./.venv/bin/python -m unittest tests/test_matcher_core.py`
+  - result: `19` tests passed
+- saved `H3` artifacts:
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_h3_unspecified_recall_summary.json`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_h3_unspecified_recall_records.csv`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_h3_unspecified_recall_comparison.json`
+  - `docs/analysis/2026-04-16-unspecified-recall-review.md`
+- overall deltas versus accepted char n-gram top-10 baseline: top-1 `-0.0030`, top-3 `+0.0000`, hit@10 `+0.0000`, MRR `-0.0016`, nDCG@10 `-0.0012`
+- target slice did not improve: `catalog_unspecified` top-1 `+0.0000`, hit@10 `+0.0000`
+- row movement hurt more than helped: `35` changed shortlist rows, `2 / 5` top-1 gains / losses, and `0 / 0` top-10 gains / losses
+- reject `H3`; no LLM batch was justified and no behavioral baseline changed
+- next roadmap movement is to start exactly `H4`, state-specific candidate balancing, while avoiding broad candidate expansion patterns that failed in `H2` and `H3`
 - `2026-04-16 08:41 AM MST`: `H2` measured and rejected; assessment-aware candidate recall did not beat the accepted char n-gram top-10 baseline
 - changed only an opt-in retrieval experiment path named `assessment_recall`, then restored the accepted code baseline after measurement
 - verified focused unit tests during measurement:
@@ -357,7 +372,7 @@ Running baseline note:
 | G4 | `rejected` | Candidate series exposure experiment | candidate `series` exposure only | near-duplicate families, wrong-top1-but-gold-in-shortlist rows, selected-row precision | review note: `docs/analysis/2026-04-14-series-exposure-review.md` | accepted: candidate-series exposure policy becomes the rerank prompt baseline |
 | H1 | `accepted` | Shortlist failure audit checkpoint | reporting / diagnosis only | split hard slices into gold-absent-from-top10 vs gold-present-but-not-selected buckets | review note: `docs/analysis/2026-04-16-shortlist-failure-audit.md` | accepted: no behavioral baseline change |
 | H2 | `rejected` | Assessment-aware candidate recall experiment | assessment-row candidate recall policy only | `Assessment`, `assessment_short_or_acronym_title`, `assessment_state_specific_expected`, overall top-1 / hit@10 stability | review note: `docs/analysis/2026-04-16-assessment-recall-review.md` | rejected: no retrieval baseline change |
-| H3 | `not started` | Catalog-unspecified recovery experiment | conservative `Unspecified` / placeholder-family candidate handling only | `catalog_unspecified`, sparse and medium evidence rows, repaired / invalid selected-id risk | review note TBD | accepted: unspecified recovery policy becomes part of retrieval baseline |
+| H3 | `rejected` | Catalog-unspecified recovery experiment | conservative `Unspecified` / placeholder-family candidate handling only | `catalog_unspecified`, sparse and medium evidence rows, repaired / invalid selected-id risk | review note: `docs/analysis/2026-04-16-unspecified-recall-review.md` | rejected: no retrieval baseline change |
 | H4 | `not started` | State-specific candidate balancing experiment | state-specific candidate balancing only | `adoption_state_high_risk`, `catalog_state_specific_expected`, assessment rows inside adoption states | review note TBD | accepted: state-specific candidate balancing becomes part of retrieval baseline |
 
 ## Exact Review Workflow
