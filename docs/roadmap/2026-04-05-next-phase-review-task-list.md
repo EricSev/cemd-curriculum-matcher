@@ -31,6 +31,23 @@ Locked baseline artifacts:
 
 Latest checkpoint:
 
+- `2026-04-16 08:31 AM MST`: `H1` measured and accepted as a diagnostic checkpoint; no matcher, retrieval, shortlist, rerank prompt, model, or reasoning behavior changed
+- added a reusable shortlist failure audit script:
+  - `scripts/report_shortlist_failure_audit.py`
+- saved `H1` artifacts:
+  - `docs/analysis/2026-04-16-shortlist-failure-audit.md`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_char_ngram_h1_shortlist_failure_audit.json`
+- representative top-10 records split: overall gold absent from top-10 `372 / 1000`, gold present in top-10 `628 / 1000`, ranker top-1 failure with gold present `140 / 1000`
+- required hard-slice readout: `Assessment` absent from top-10 `142 / 260`, `catalog_unspecified` absent from top-10 `37 / 56`, `adoption_state_high_risk` absent from top-10 `148 / 349`, `catalog_state_specific_expected` absent from top-10 `16 / 53`
+- accept `H1`; no behavioral baseline change
+- next roadmap movement is to start exactly `H2`, assessment-aware candidate recall, because `Assessment` is heavily recall-limited and is the largest hard slice in the current audit
+- `2026-04-16 08:31 AM MST`: post-`G` experiment set defined after pushing the completed `G4` closeout commit; no matcher, retrieval, shortlist, rerank prompt, model, or reasoning behavior changed
+- confirmed the accepted rerank prompt baseline remains `F2` no-score exposure on top of matcher `C1 + C2 + C5`, retrieval `0.25 * BM25 + 0.5 * semantic + 0.25 * char n-gram`, shortlist `10`, model `gpt-5.4-mini`, reasoning `medium`
+- confirmed the `G` series is fully closed: `G1` accepted, `G2` / `G3` / `G4` rejected
+- defined a new `H` series focused on candidate recall and shortlist quality for the hard assessment, `Unspecified`, and state-specific slices rather than more prompt input-contract trimming
+- saved roadmap definition note:
+  - `docs/roadmap/2026-04-16-next-experiment-set.md`
+- no active experiment-changing task is in progress after this checkpoint; the next roadmap movement is to start exactly `H1`, a diagnostic-only shortlist failure audit
 - `2026-04-15 10:25 AM MST`: `G4` measured and rejected; removing candidate `series` from `SHORTLIST_CANDIDATES` did not beat the canonical accepted `F2` baseline
 - changed only the `SHORTLIST_CANDIDATES` payload in `src/curriculum_matcher/llm_rerank.py` by removing `series`, then restored the accepted `F2` baseline after measurement
 - saved `G4` artifacts:
@@ -323,6 +340,10 @@ Running baseline note:
 | G2 | `rejected` | Matcher-internal confidence label suppression | remove `confidence_band` and `match_selected_strategy` only | all-row top-1, selected-row top-1, wrong-top1-but-gold-in-shortlist rows, selection-rate stability | review note: `docs/analysis/2026-04-14-matcher-internal-label-suppression-review.md` | accepted: trimmed row-context contract becomes the rerank prompt baseline |
 | G3 | `rejected` | Derived ambiguity label suppression | remove `usage_ambiguity`, `state_specific_risk`, `placeholder_mapping`, and `assessment_slice` only | state-specific, placeholder, and assessment ambiguity slices | review note: `docs/analysis/2026-04-14-derived-ambiguity-label-suppression-review.md` | accepted: derived-row-label policy becomes the rerank prompt baseline |
 | G4 | `rejected` | Candidate series exposure experiment | candidate `series` exposure only | near-duplicate families, wrong-top1-but-gold-in-shortlist rows, selected-row precision | review note: `docs/analysis/2026-04-14-series-exposure-review.md` | accepted: candidate-series exposure policy becomes the rerank prompt baseline |
+| H1 | `accepted` | Shortlist failure audit checkpoint | reporting / diagnosis only | split hard slices into gold-absent-from-top10 vs gold-present-but-not-selected buckets | review note: `docs/analysis/2026-04-16-shortlist-failure-audit.md` | accepted: no behavioral baseline change |
+| H2 | `not started` | Assessment-aware candidate recall experiment | assessment-row candidate recall policy only | `Assessment`, `assessment_short_or_acronym_title`, `assessment_state_specific_expected`, overall top-1 / hit@10 stability | review note TBD | accepted: assessment candidate recall policy becomes part of retrieval baseline |
+| H3 | `not started` | Catalog-unspecified recovery experiment | conservative `Unspecified` / placeholder-family candidate handling only | `catalog_unspecified`, sparse and medium evidence rows, repaired / invalid selected-id risk | review note TBD | accepted: unspecified recovery policy becomes part of retrieval baseline |
+| H4 | `not started` | State-specific candidate balancing experiment | state-specific candidate balancing only | `adoption_state_high_risk`, `catalog_state_specific_expected`, assessment rows inside adoption states | review note TBD | accepted: state-specific candidate balancing becomes part of retrieval baseline |
 
 ## Exact Review Workflow
 
