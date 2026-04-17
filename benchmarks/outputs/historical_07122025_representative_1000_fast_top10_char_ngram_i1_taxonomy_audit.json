@@ -1,0 +1,197 @@
+{
+  "records_row_count": 1000,
+  "focal_row_count": 316,
+  "llm_joined_row_count": 455,
+  "overall_focal": {
+    "row_count": 316,
+    "bucket_counts": {
+      "already_correct_or_recovered": 127,
+      "ambiguous_historical_ground_truth": 135,
+      "catalog_label_or_placeholder_structure": 38,
+      "gold_present_selection_failure": 10,
+      "likely_retrieval_miss": 6
+    },
+    "top10_absent_count": 179,
+    "top10_absent_rate": 0.5665,
+    "gold_present_selection_failure_count": 37,
+    "gold_present_selection_failure_rate": 0.1171,
+    "llm_joined_count": 184
+  },
+  "slices": {
+    "Assessment": {
+      "row_count": 260,
+      "bucket_counts": {
+        "already_correct_or_recovered": 114,
+        "ambiguous_historical_ground_truth": 135,
+        "catalog_label_or_placeholder_structure": 1,
+        "gold_present_selection_failure": 4,
+        "likely_retrieval_miss": 6
+      },
+      "top10_absent_count": 142,
+      "top10_absent_rate": 0.5462,
+      "gold_present_selection_failure_count": 23,
+      "gold_present_selection_failure_rate": 0.0885,
+      "llm_joined_count": 136
+    },
+    "catalog_unspecified": {
+      "row_count": 56,
+      "bucket_counts": {
+        "already_correct_or_recovered": 13,
+        "catalog_label_or_placeholder_structure": 37,
+        "gold_present_selection_failure": 6
+      },
+      "top10_absent_count": 37,
+      "top10_absent_rate": 0.6607,
+      "gold_present_selection_failure_count": 14,
+      "gold_present_selection_failure_rate": 0.25,
+      "llm_joined_count": 48
+    }
+  },
+  "overlaps": {
+    "bucket_by_assessment_slice": {
+      "already_correct_or_recovered": {
+        "assessment_other": 4,
+        "assessment_publisher_missing": 29,
+        "assessment_short_or_acronym_title": 75,
+        "assessment_state_specific_expected": 6,
+        "not_assessment": 13
+      },
+      "ambiguous_historical_ground_truth": {
+        "assessment_other": 1,
+        "assessment_publisher_missing": 49,
+        "assessment_short_or_acronym_title": 84,
+        "assessment_state_specific_expected": 1,
+        "not_assessment": 0
+      },
+      "catalog_label_or_placeholder_structure": {
+        "assessment_other": 0,
+        "assessment_publisher_missing": 0,
+        "assessment_short_or_acronym_title": 1,
+        "assessment_state_specific_expected": 0,
+        "not_assessment": 37
+      },
+      "gold_present_selection_failure": {
+        "assessment_other": 0,
+        "assessment_publisher_missing": 3,
+        "assessment_short_or_acronym_title": 1,
+        "assessment_state_specific_expected": 0,
+        "not_assessment": 6
+      },
+      "likely_retrieval_miss": {
+        "assessment_other": 6,
+        "assessment_publisher_missing": 0,
+        "assessment_short_or_acronym_title": 0,
+        "assessment_state_specific_expected": 0,
+        "not_assessment": 0
+      }
+    },
+    "bucket_by_placeholder_mapping": {
+      "already_correct_or_recovered": {
+        "catalog_unspecified": 13,
+        "no_information_available": 0,
+        "standard_catalog_mapping": 114
+      },
+      "ambiguous_historical_ground_truth": {
+        "catalog_unspecified": 0,
+        "no_information_available": 0,
+        "standard_catalog_mapping": 135
+      },
+      "catalog_label_or_placeholder_structure": {
+        "catalog_unspecified": 37,
+        "no_information_available": 1,
+        "standard_catalog_mapping": 0
+      },
+      "gold_present_selection_failure": {
+        "catalog_unspecified": 6,
+        "no_information_available": 0,
+        "standard_catalog_mapping": 4
+      },
+      "likely_retrieval_miss": {
+        "catalog_unspecified": 0,
+        "no_information_available": 0,
+        "standard_catalog_mapping": 6
+      }
+    },
+    "bucket_by_state_specific_risk": {
+      "already_correct_or_recovered": {
+        "adoption_state_high_risk": 32,
+        "catalog_state_specific_expected": 6,
+        "standard_state": 89
+      },
+      "ambiguous_historical_ground_truth": {
+        "adoption_state_high_risk": 50,
+        "catalog_state_specific_expected": 1,
+        "standard_state": 84
+      },
+      "catalog_label_or_placeholder_structure": {
+        "adoption_state_high_risk": 22,
+        "catalog_state_specific_expected": 0,
+        "standard_state": 16
+      },
+      "gold_present_selection_failure": {
+        "adoption_state_high_risk": 3,
+        "catalog_state_specific_expected": 0,
+        "standard_state": 7
+      },
+      "likely_retrieval_miss": {
+        "adoption_state_high_risk": 2,
+        "catalog_state_specific_expected": 0,
+        "standard_state": 4
+      }
+    },
+    "bucket_by_evidence_richness": {
+      "already_correct_or_recovered": {
+        "medium": 56,
+        "policy_placeholder_no_info": 0,
+        "rich": 7,
+        "sparse": 64
+      },
+      "ambiguous_historical_ground_truth": {
+        "medium": 66,
+        "policy_placeholder_no_info": 0,
+        "rich": 0,
+        "sparse": 69
+      },
+      "catalog_label_or_placeholder_structure": {
+        "medium": 19,
+        "policy_placeholder_no_info": 1,
+        "rich": 5,
+        "sparse": 13
+      },
+      "gold_present_selection_failure": {
+        "medium": 8,
+        "policy_placeholder_no_info": 0,
+        "rich": 0,
+        "sparse": 2
+      },
+      "likely_retrieval_miss": {
+        "medium": 2,
+        "policy_placeholder_no_info": 0,
+        "rich": 4,
+        "sparse": 0
+      }
+    },
+    "bucket_by_publisher_presence": {
+      "already_correct_or_recovered": {
+        "missing": 103,
+        "present": 24
+      },
+      "ambiguous_historical_ground_truth": {
+        "missing": 120,
+        "present": 15
+      },
+      "catalog_label_or_placeholder_structure": {
+        "missing": 17,
+        "present": 21
+      },
+      "gold_present_selection_failure": {
+        "missing": 6,
+        "present": 4
+      },
+      "likely_retrieval_miss": {
+        "missing": 0,
+        "present": 6
+      }
+    }
+  }
+}

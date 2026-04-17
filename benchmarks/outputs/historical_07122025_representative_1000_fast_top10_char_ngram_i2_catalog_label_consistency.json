@@ -1,0 +1,43 @@
+{
+  "records_row_count": 1000,
+  "focal_row_count": 330,
+  "family_counts": {
+    "assessment_like": 273,
+    "catalog_unspecified": 56,
+    "no_information_available": 1
+  },
+  "issue_counts": {
+    "assessment_gold_present_selection_issue": 22,
+    "assessment_like_consistent": 249,
+    "assessment_usage_catalog_type_mismatch": 2,
+    "policy_no_information_placeholder": 1,
+    "unspecified_label_but_retrievable": 19,
+    "unspecified_structural_placeholder": 37
+  },
+  "by_family_issue": {
+    "assessment_like": {
+      "assessment_gold_present_selection_issue": 22,
+      "assessment_like_consistent": 249,
+      "assessment_usage_catalog_type_mismatch": 2,
+      "policy_no_information_placeholder": 0,
+      "unspecified_label_but_retrievable": 0,
+      "unspecified_structural_placeholder": 0
+    },
+    "catalog_unspecified": {
+      "assessment_gold_present_selection_issue": 0,
+      "assessment_like_consistent": 0,
+      "assessment_usage_catalog_type_mismatch": 0,
+      "policy_no_information_placeholder": 0,
+      "unspecified_label_but_retrievable": 19,
+      "unspecified_structural_placeholder": 37
+    },
+    "no_information_available": {
+      "assessment_gold_present_selection_issue": 0,
+      "assessment_like_consistent": 0,
+      "assessment_usage_catalog_type_mismatch": 0,
+      "policy_no_information_placeholder": 1,
+      "unspecified_label_but_retrievable": 0,
+      "unspecified_structural_placeholder": 0
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "row_count": 330,
+  "changed_row_count": 56,
+  "baseline_placeholder_counts": {
+    "catalog_unspecified": 56,
+    "no_information_available": 1,
+    "standard_catalog_mapping": 273
+  },
+  "candidate_placeholder_counts": {
+    "catalog_unspecified_named_series": 46,
+    "catalog_unspecified_structural_placeholder": 10,
+    "no_information_available": 1,
+    "standard_catalog_mapping": 273
+  },
+  "candidate_slice_metrics": {
+    "catalog_unspecified_named_series": {
+      "count": 46,
+      "top1_accuracy": 0.1087,
+      "top10_recall": 0.413
+    },
+    "catalog_unspecified_structural_placeholder": {
+      "count": 10,
+      "top1_accuracy": 0.0,
+      "top10_recall": 0.0
+    },
+    "no_information_available": {
+      "count": 1,
+      "top1_accuracy": 0.0,
+      "top10_recall": 0.0
+    },
+    "standard_catalog_mapping": {
+      "count": 273,
+      "top1_accuracy": 0.3846,
+      "top10_recall": 0.4689
+    }
+  }
+}

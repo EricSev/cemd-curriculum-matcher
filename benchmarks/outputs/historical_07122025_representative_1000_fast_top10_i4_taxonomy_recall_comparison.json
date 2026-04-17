@@ -1,0 +1,63 @@
+{
+  "top1_correct": {
+    "baseline": 0.488,
+    "candidate": 0.488,
+    "delta": 0.0,
+    "gains": 0,
+    "losses": 0
+  },
+  "top3_correct": {
+    "baseline": 0.574,
+    "candidate": 0.574,
+    "delta": 0.0,
+    "gains": 0,
+    "losses": 0
+  },
+  "top10_correct": {
+    "baseline": 0.628,
+    "candidate": 0.628,
+    "delta": 0.0,
+    "gains": 0,
+    "losses": 0
+  },
+  "reciprocal_rank": {
+    "baseline": 0.5374,
+    "candidate": 0.5374,
+    "delta": 0.0
+  },
+  "ndcg_at_10": {
+    "baseline": 0.5596,
+    "candidate": 0.5596,
+    "delta": 0.0
+  },
+  "row_movement": {
+    "common_rows": 1000,
+    "changed_shortlist_rows": 0
+  },
+  "slices": {
+    "Assessment": {
+      "count": 260,
+      "top1_delta": 0.0,
+      "top10_delta": 0.0,
+      "top10_gains": 0,
+      "top10_losses": 0,
+      "changed_shortlist_rows": 0
+    },
+    "assessment_other": {
+      "count": 11,
+      "top1_delta": 0.0,
+      "top10_delta": 0.0,
+      "top10_gains": 0,
+      "top10_losses": 0,
+      "changed_shortlist_rows": 0
+    },
+    "catalog_unspecified_named_series_proxy": {
+      "count": 56,
+      "top1_delta": 0.0,
+      "top10_delta": 0.0,
+      "top10_gains": 0,
+      "top10_losses": 0,
+      "changed_shortlist_rows": 0
+    }
+  }
+}

@@ -31,6 +31,49 @@ Locked baseline artifacts:
 
 Latest checkpoint:
 
+- `2026-04-17 06:30 AM MST`: `I` series closed; `I1`, `I2`, and `I3` accepted as diagnostic/reporting checkpoints, `I4` rejected as a retrieval candidate, and no runtime baseline changed
+- added reusable diagnostic scripts:
+  - `scripts/report_i2_catalog_label_consistency.py`
+  - `scripts/report_i3_label_normalization.py`
+- saved `I2` artifacts:
+  - `docs/analysis/2026-04-17-i2-catalog-label-consistency.md`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_char_ngram_i2_catalog_label_consistency.json`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_char_ngram_i2_catalog_label_consistency_rows.csv`
+- saved `I3` artifacts:
+  - `docs/analysis/2026-04-17-i3-label-normalization-review.md`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_char_ngram_i3_label_normalization.json`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_char_ngram_i3_label_normalization_rows.csv`
+- measured and rejected `I4`; candidate artifacts:
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_i4_taxonomy_recall_summary.json`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_i4_taxonomy_recall_records.csv`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_i4_taxonomy_recall_comparison.json`
+  - `docs/analysis/2026-04-17-i4-taxonomy-recall-review.md`
+- `I4` deltas versus accepted char n-gram top-10 baseline: top-1 `+0.0000`, top-3 `+0.0000`, hit@10 `+0.0000`, MRR `+0.0000`, nDCG@10 `+0.0000`; changed shortlist rows `0`
+- wrote status report:
+  - `docs/analysis/2026-04-17-i-series-status-report.md`
+- next roadmap movement is to define a new experiment set before changing behavior again
+- `2026-04-17 06:13 AM MST`: `I1` measured and accepted as a diagnostic checkpoint; no matcher, retrieval, shortlist, rerank prompt, model, reasoning, or Tkinter operator behavior changed
+- added reusable taxonomy audit script:
+  - `scripts/report_i1_taxonomy_audit.py`
+- saved `I1` artifacts:
+  - `docs/analysis/2026-04-17-i1-taxonomy-audit.md`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_char_ngram_i1_taxonomy_audit.json`
+  - `benchmarks/outputs/historical_07122025_representative_1000_fast_top10_char_ngram_i1_taxonomy_audit_rows.csv`
+- focal audit covered `316` rows across `Assessment` and `catalog_unspecified`; `179` focal rows still had gold absent from the accepted top-10
+- primary bucket counts: `already_correct_or_recovered` `127`, `ambiguous_historical_ground_truth` `135`, `catalog_label_or_placeholder_structure` `38`, `gold_present_selection_failure` `10`, `likely_retrieval_miss` `6`
+- `Assessment` readout: `135 / 260` rows are primarily ambiguity / historical-ground-truth cases, `6 / 260` are clean likely retrieval misses, and `4 / 260` are primary gold-present selection failures
+- `catalog_unspecified` readout: `37 / 56` rows are catalog-label / placeholder-structure cases, `13 / 56` are already correct or recovered, and `6 / 56` are primary gold-present selection failures
+- accept `I1`; no behavioral baseline changed
+- next roadmap movement is to start exactly `I2`, a diagnostic-only catalog-label consistency audit, before any retrieval or rerank behavior change
+- `2026-04-17 06:07 AM MST`: post-`H` experiment set defined; no matcher, retrieval, shortlist, rerank prompt, model, reasoning, or Tkinter operator behavior changed
+- read the latest H4 closeout handoff, the live tracker, the H-series definition, and H1-H4 review notes
+- confirmed the accepted baseline remains matcher `C1 + C2 + C5`, retrieval `0.25 * BM25 + 0.5 * semantic + 0.25 * char n-gram`, shortlist `10`, rerank prompt `F2` no-score candidate payload, model `gpt-5.4-mini`, reasoning `medium`
+- defined the new `I` series around catalog-label/error taxonomy rather than broad retrieval expansion
+- saved roadmap definition and review note:
+  - `docs/roadmap/2026-04-17-post-h-experiment-set.md`
+  - `docs/analysis/2026-04-17-post-h-experiment-set-review.md`
+- current roadmap state: `I1` is not started and no experiment-changing task is in progress
+- next roadmap movement is to start exactly `I1`, a diagnostic-only Assessment and catalog-unspecified taxonomy audit
 - `2026-04-16 09:07 AM MST`: `H4` measured and rejected; state-specific candidate balancing did not beat the accepted char n-gram top-10 baseline, and the `H` series is now closed
 - changed only an opt-in retrieval experiment path named `state_balance`, then restored the accepted code baseline after measurement
 - verified focused unit tests during measurement:
@@ -390,6 +433,10 @@ Running baseline note:
 | H2 | `rejected` | Assessment-aware candidate recall experiment | assessment-row candidate recall policy only | `Assessment`, `assessment_short_or_acronym_title`, `assessment_state_specific_expected`, overall top-1 / hit@10 stability | review note: `docs/analysis/2026-04-16-assessment-recall-review.md` | rejected: no retrieval baseline change |
 | H3 | `rejected` | Catalog-unspecified recovery experiment | conservative `Unspecified` / placeholder-family candidate handling only | `catalog_unspecified`, sparse and medium evidence rows, repaired / invalid selected-id risk | review note: `docs/analysis/2026-04-16-unspecified-recall-review.md` | rejected: no retrieval baseline change |
 | H4 | `rejected` | State-specific candidate balancing experiment | state-specific candidate balancing only | `adoption_state_high_risk`, `catalog_state_specific_expected`, assessment rows inside adoption states | review note: `docs/analysis/2026-04-16-state-balance-review.md` | rejected: no retrieval baseline change |
+| I1 | `accepted` | Assessment and catalog-unspecified taxonomy audit | reporting / diagnosis only | classify failures as retrieval miss, catalog-label / placeholder-structure issue, ambiguous historical ground truth, or gold-present selection failure | review note: `docs/analysis/2026-04-17-i1-taxonomy-audit.md` | accepted: no behavioral baseline change |
+| I2 | `accepted` | Catalog-label consistency audit | catalog / benchmark label audit only | consistency of `Unspecified`, no-information, district-created, and assessment-like catalog labels | review note: `docs/analysis/2026-04-17-i2-catalog-label-consistency.md` | accepted: no behavioral baseline change |
+| I3 | `accepted` | Narrow label-normalization candidate | split `catalog_unspecified` into named-series versus structural-placeholder labels only | targeted hard-slice interpretability and downstream rerank stability if batched | review note: `docs/analysis/2026-04-17-i3-label-normalization-review.md` | accepted as diagnostic label split; no runtime baseline change |
+| I4 | `rejected` | Taxonomy-informed retrieval candidate | one retrieval rule for audited assessment clean-miss patterns only | targeted hit@10 recovery, overall top-1 stability, LLM batch only if justified | review note: `docs/analysis/2026-04-17-i4-taxonomy-recall-review.md` | rejected: no retrieval baseline change |
 
 ## Exact Review Workflow
 
